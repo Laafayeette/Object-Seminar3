@@ -171,7 +171,7 @@ public class ControllerTest {
 
         contr.getSale().getSaleDTOItemList().add(new ItemDTO("Banana", 2, 5.0, 0.25));
 
-        SaleDTO result = contr.scanItem(2, 1);
+        SaleDTO result = contr.scanItem(2);
         System.out.println(result.getPurchasedItems().size());
 
         assertEquals("The size is not 2", result.getPurchasedItems().size(), expectedSizeOfListAfterScan);
@@ -192,10 +192,10 @@ public class ControllerTest {
         itemsInInvSys.add(new ItemDTO("Orange", 3, 4.99, 0.18));
         itemsInInvSys.add(new ItemDTO("Grapes", 4, 8.99, 0.25));
 
-        contr.scanItem(2, 1);
+        contr.scanItem(2);
         System.out.println("This is the item list: " + contr.getSale().getSaleDTOItemList());
 
-        SaleDTO saleDTO = contr.scanItem(3, 1);
+        SaleDTO saleDTO = contr.scanItem(3);
 
         List<ItemDTO> dummyList = new ArrayList<>();
         dummyList.add(new ItemDTO("Apple", 2, 3.49, 0.12));
@@ -217,9 +217,9 @@ public class ControllerTest {
         itemsInInvSys.add(new ItemDTO("Apple", 2, 3.49, 0.12));
         itemsInInvSys.add(new ItemDTO("Orange", 3, 4.99, 0.18));
 
-        contr.scanItem(2, 1);
+        contr.scanItem(2);
 
-        SaleDTO saleDTO = contr.scanItem(3, 1);
+        SaleDTO saleDTO = contr.scanItem(3);
 
         List<ItemDTO> dummyList = new ArrayList<>();
         dummyList.add(new ItemDTO("Apple", 2, 3.49, 0.12));
@@ -241,7 +241,7 @@ public class ControllerTest {
         ItemDTO item1 = new ItemDTO("ABC123", 5, 10.0, 0.25, 1);
         contr.getSale().getSaleDTOItemList().add(item1);
 
-        SaleDTO saleDTO = contr.scanItem(5, 1);
+        SaleDTO saleDTO = contr.scanItem(5);
 
         int amount = 200;
         String paymentMethod = "Cash";
@@ -269,7 +269,7 @@ public class ControllerTest {
         ItemDTO item1 = new ItemDTO("ABC123", 5, 10.0, 0.25, 1);
         contr.getSale().getSaleDTOItemList().add(item1);
 
-        SaleDTO saleDTO = contr.scanItem(5, 1);
+        SaleDTO saleDTO = contr.scanItem(5);
 
         int amount = 200;
         String paymentMethod = "Cash";
@@ -300,7 +300,7 @@ public class ControllerTest {
         ItemDTO item1 = new ItemDTO("ABC123", 5, 10.0, 0.25, 1);
         contr.getSale().getSaleDTOItemList().add(item1);
 
-        SaleDTO saleDTO = contr.scanItem(5, 1);
+        SaleDTO saleDTO = contr.scanItem(5);
 
         int amount = 10;
         String paymentMethod = "Cash";
@@ -328,7 +328,7 @@ public class ControllerTest {
         ItemDTO item1 = new ItemDTO("ABC123", 5, 12.5, 0, 1);
         contr.getSale().getSaleDTOItemList().add(item1);
 
-        SaleDTO saleDTO = contr.scanItem(5, 1);
+        SaleDTO saleDTO = contr.scanItem(5);
 
         double amount = 12.5;
         String paymentMethod = "Cash";

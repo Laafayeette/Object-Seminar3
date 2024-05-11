@@ -31,7 +31,7 @@ public class View {
         int minQuantity = 1;
         int maxQuantity = 3;
         Random random = new Random();
-        for(int i = 1, quantity = 4; i <5; i++) {
+        for(int i = 1, quantity = 2; i <5; i++) {
             //quantity = random.nextInt(maxQuantity - minQuantity + 1) + minQuantity;
             for(int j= 1; j <= quantity; j++) {
                 System.out.println("---------------------Scanning item with ID " + i + "---------------------------");

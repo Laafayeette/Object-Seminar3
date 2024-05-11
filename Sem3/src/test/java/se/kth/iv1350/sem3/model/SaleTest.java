@@ -155,7 +155,7 @@ public class SaleTest {
 
         int itemID = 2;
 
-        SaleDTO expectedSaleDTO = sale.increaseQuantity(itemID, 1);
+        SaleDTO expectedSaleDTO = sale.increaseQuantity(itemID);
 
         assertFalse(expectedSaleDTO == saleDTO);
     }
@@ -166,7 +166,7 @@ public class SaleTest {
         ItemDTO item1 = new ItemDTO("ABC123", 2, 12.0, 0.25, 1);
         int itemID = 1;
 
-        SaleDTO expectedSaleDTO = sale.increaseQuantity(itemID,1);
+        SaleDTO expectedSaleDTO = sale.increaseQuantity(itemID);
 
         String expectedSystemPrintOutput = inMemoryPrintOut.toString();
         assertTrue(expectedSystemPrintOutput.contains("A String never meant to be reached"));
@@ -180,7 +180,7 @@ public class SaleTest {
 
         int itemID = -2;
 
-        SaleDTO expectedSaleDTO = sale.increaseQuantity(itemID,1);
+        SaleDTO expectedSaleDTO = sale.increaseQuantity(itemID);
 
         assertFalse(expectedSaleDTO == saleDTO);
     }
