@@ -19,10 +19,13 @@ public class ItemDTO {
      * @param itemVAT The VAT of the item.
      */
     public ItemDTO(String itemName, int itemID, double itemPrice, double itemVAT) {
-        this(itemName, itemID, itemPrice, itemVAT, 1);
+        this.itemName = itemName;
+        this.itemID = itemID;
+        this.itemPrice = itemPrice;
+        this.itemVAT = itemVAT;
+        this.quantity = 1;
     }
-
-    /**
+    /*
      * Instantiates a new ItemDTO from the given descriptions of the item.
      * Quantity is set as the argument passed to it.
      * @param itemName The name of the item.
@@ -30,14 +33,14 @@ public class ItemDTO {
      * @param itemPrice The price of the item (excluding VAT).
      * @param itemVAT The VAT of the item.
      * @param quantity The quantity of the item.
-     */
+
     public ItemDTO(String itemName, int itemID, double itemPrice, double itemVAT, int quantity) {
         this.itemName = itemName;
         this.itemID = itemID;
         this.itemPrice = itemPrice;
         this.itemVAT = itemVAT;
         this.quantity = quantity;
-    }
+    }*/
 
     public String getItemName() {
         return itemName;
