@@ -18,6 +18,7 @@ public class Sale {
 
     private SaleDTO saleDTO;
 
+
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
      */
@@ -74,13 +75,13 @@ public class Sale {
     /**
      * Increases the quantity of an item in the sale by scanning and adding it to the sale.
      * @param itemID The ID of the item to be scanned again.
-     * @param quantity The quantity of the item to be scanned again, usually 1.
      * @return A new saleDTO after increasing the quantity of the item.
      */
     public SaleDTO increaseQuantity(int itemID) {
             for (ItemDTO item : purchasedItems) {
                 if (item.getItemID() == itemID) {
                     System.out.println("This is the itemQuantity: " + item.getQuantity());
+
                     int quantity = item.getQuantity() + 1;
                     System.out.println("This is the quantity after incrementing the quantity: " + quantity);
                     //item.getQuantity = item.getQuantity() + 1;
@@ -93,8 +94,12 @@ public class Sale {
                     double itemTotalPrice = itemPrice * (1 + itemVAT);
                     totalVAT += (itemPrice * itemVAT);
 
-                    purchasedItems.add(new ItemDTO(itemName, itemID, itemPrice, itemVAT));
-
+                    purchasedItems.remove(item);
+                    purchasedItems.add(new ItemDTO(itemName, itemID, itemPrice, itemVAT, quantity));
+                    /**
+                     * Vad ifall jag hade tagit bort item:et, och skapat ett nytt objekt av samma itemDTO
+                     * fast denna gång med en specifierad quantity av den itemDTO?
+                     */
                     currentTotalPrice = currentTotalPrice + itemTotalPrice;
                     this.saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, totalVAT);
                     return saleDTO;

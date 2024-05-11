@@ -98,4 +98,6 @@ public class Controller {
     public Sale getSale() {
         return sale;
     }
+
+
 }
