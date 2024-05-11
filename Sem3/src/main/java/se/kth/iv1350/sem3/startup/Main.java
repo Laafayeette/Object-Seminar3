@@ -17,7 +17,10 @@ public class Main {
      * @param args The Command-line arguments to the program.
      */
     public static void main(String[] args) {
+
         Controller contr = new Controller();
         View view = new View(contr);
+        view.sampleExecution();
+
     }
 }

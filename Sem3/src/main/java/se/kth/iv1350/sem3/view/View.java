@@ -24,10 +24,9 @@ public class View {
      */
     public View(Controller contr) {
         this.contr = contr;
-        sampleExecution();
     }
 
-    private void sampleExecution() {
+    public void sampleExecution() {
         contr.startSale();
         int minQuantity = 1;
         int maxQuantity = 3;
