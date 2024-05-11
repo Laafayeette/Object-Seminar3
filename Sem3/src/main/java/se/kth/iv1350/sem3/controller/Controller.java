@@ -48,10 +48,9 @@ public class Controller {
      *  If the item has previously been scanned in the sale, it fetches the item information from the current sale and returns an update saleDTO.
      *  Otherwise, it fetches the item information from the inventory system and returns an updated saleDTO with the scanned item.
      * @param itemID The ID of the item to be scanned.
-     * @param quantity The quantity of the item to be scanned.
      * @return A saleDTO representing the updated state of the sale after scanning the item.
      */
-    public SaleDTO scanItem(int itemID, int quantity) {
+    public SaleDTO scanItem(int itemID) {
         if(sale.findItemInfo(itemID)) {
             SaleDTO saleDTO = sale.increaseQuantity(itemID);
             return saleDTO;
