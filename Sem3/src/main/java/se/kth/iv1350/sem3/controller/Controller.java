@@ -53,7 +53,7 @@ public class Controller {
      */
     public SaleDTO scanItem(int itemID, int quantity) {
         if(sale.findItemInfo(itemID)) {
-            SaleDTO saleDTO = sale.increaseQuantity(itemID, quantity);
+            SaleDTO saleDTO = sale.increaseQuantity(itemID);
             return saleDTO;
         }
         else {

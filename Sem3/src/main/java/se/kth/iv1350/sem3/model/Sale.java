@@ -77,9 +77,14 @@ public class Sale {
      * @param quantity The quantity of the item to be scanned again, usually 1.
      * @return A new saleDTO after increasing the quantity of the item.
      */
-    public SaleDTO increaseQuantity(int itemID, double quantity) {
+    public SaleDTO increaseQuantity(int itemID) {
             for (ItemDTO item : purchasedItems) {
                 if (item.getItemID() == itemID) {
+                    System.out.println("This is the itemQuantity: " + item.getQuantity());
+                    int quantity = item.getQuantity() + 1;
+                    System.out.println("This is the quantity after incrementing the quantity: " + quantity);
+                    //item.getQuantity = item.getQuantity() + 1;
+                    //System.out.println("This is the quantity of the item: " + quantity);
                     System.out.println(item.toString());
                     String itemName = item.getItemName();
                     double itemPrice = item.getItemPrice();
