@@ -158,6 +158,9 @@ public class ControllerTest {
     }
 
 
+    /**
+     * This test is meant to fail now, because we are no longer duplicating any items.
+     */
 
     @Test
     void testScanSizeOfListAfterScanSameItem() {
