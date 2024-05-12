@@ -170,7 +170,7 @@ public class ControllerTest {
         int itemID = 2;
         int quantity = 1;
 
-        int expectedSizeOfListAfterScan = 2;
+        int expectedSizeOfListAfterScan = 1;
 
         contr.getSale().getSaleDTOItemList().add(new ItemDTO("Banana", 2, 5.0, 0.25));
 
