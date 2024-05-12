@@ -80,26 +80,19 @@ public class Sale {
     public SaleDTO increaseQuantity(int itemID) {
             for (ItemDTO item : purchasedItems) {
                 if (item.getItemID() == itemID) {
-                    System.out.println("This is the itemQuantity: " + item.getQuantity());
+                    //System.out.println("This is the itemQuantity: " + item.getQuantity());
 
                     int quantity = item.getQuantity() + 1;
-                    System.out.println("This is the quantity after incrementing the quantity: " + quantity);
-                    //item.getQuantity = item.getQuantity() + 1;
-                    //System.out.println("This is the quantity of the item: " + quantity);
-                    System.out.println(item.toString());
+                    //System.out.println("This is the quantity after incrementing the quantity: " + quantity);
+                    //System.out.println(item.toString());
 
                     ItemDTO updatedItemWithQuantity = new ItemDTO(item.getItemName(), itemID, item.getItemPrice(), item.getItemVAT(), quantity);
 
-                    //double itemTTTprice = calculatePriceAndVATForScannedItem(itemPrice, itemVAT);
-                    double itemTotalPrice = item.getItemPrice() * (1 + item.getItemVAT());
-                    totalVAT += (item.getItemPrice() * item.getItemVAT());
+                    double itemTotalPrice = calculatePriceAndVATForScannedItem(item.getItemPrice(), item.getItemVAT());
+
 
                     purchasedItems.remove(item);
                     purchasedItems.add(updatedItemWithQuantity);
-                    /**
-                     * Vad ifall jag hade tagit bort item:et, och skapat ett nytt objekt av samma itemDTO
-                     * fast denna gång med en specifierad quantity av den itemDTO?
-                     */
                     currentTotalPrice = currentTotalPrice + itemTotalPrice;
                     this.saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, totalVAT);
                     return saleDTO;
