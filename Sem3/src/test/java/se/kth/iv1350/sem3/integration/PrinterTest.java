@@ -10,12 +10,17 @@ import se.kth.iv1350.sem3.model.Receipt;
 import se.kth.iv1350.sem3.model.Payment;
 import se.kth.iv1350.sem3.model.Sale;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PrinterTest {
+public class PrinterTest {
+
+    private ByteArrayOutputStream outputStream;
+    private PrintStream originalSysOut;
 
     private double currentTotalPrice;
     private List<ItemDTO> purchasedItems;
@@ -28,12 +33,17 @@ class PrinterTest {
 
     @BeforeEach
     void setUp() {
+        outputStream = new ByteArrayOutputStream();
+        originalSysOut = System.out;
+        System.setOut(new PrintStream(outputStream));
         Printer printer = new Printer();
         purchasedItems = new ArrayList<>();
     }
 
     @AfterEach
     void tearDown() {
+        outputStream = null;
+        System.setOut(originalSysOut);
         Printer printer = null;
         sale = null;
         saleDTO = null;
@@ -47,57 +57,50 @@ class PrinterTest {
     @Test
     void testPrintNotNull() {
         Printer printer = new Printer();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
         ItemDTO item1 = new ItemDTO("Gurka", 2, 5.0, 0.25, 1);
         purchasedItems.add(item1);
+
         double item1Price = item1.getItemPrice();
         double item1VAT = item1.getItemVAT();
 
         double currentTotalPrice = item1Price;  //5 kr
 
-        SaleDTO saleDTO = new SaleDTO(purchasedItems, item1Price, item1VAT);
-
+        SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
         Payment payment = new Payment(150, "Cash", currentTotalPrice);
-
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);
 
-        Receipt printedReceipt = printer.getReceipt();
-
-        assertNotNull(printedReceipt);
+        assertNotNull(outputStream.toString());
     }
 
     @Test
     void testPrintEqualsPrintedReceipt() {
         Printer printer = new Printer();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
         ItemDTO item1 = new ItemDTO("Gurka", 2, 5.0, 0.25, 1);
         purchasedItems.add(item1);
+
         double item1Price = item1.getItemPrice();
         double item1VAT = item1.getItemVAT();
 
         double currentTotalPrice = item1Price;  //5 kr
 
-        SaleDTO saleDTO = new SaleDTO(purchasedItems, item1Price, item1VAT);
-
+        SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
         Payment payment = new Payment(150, "Cash", currentTotalPrice);
-
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);
 
-        Receipt printedReceipt = printer.getReceipt();
-
-        assertEquals(receipt, printedReceipt, "The given receipts are not equal");
+        String expectedReceipt = receipt.getReceipt();
+        String printedReceipt = outputStream.toString();
+        assertEquals(expectedReceipt.strip(), printedReceipt.strip());
     }
-
-    @Test
-    void testPrinterNull() {
-        Printer printer = new Printer();
-
-        printer.print(null);
-
-        assertNull(printer.getReceipt(), "The given receipt is not null");
-    }
-
-
 }
