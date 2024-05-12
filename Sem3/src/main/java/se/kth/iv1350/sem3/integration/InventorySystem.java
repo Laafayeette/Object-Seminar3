@@ -41,7 +41,7 @@ public class InventorySystem {
     public ItemDTO fetchItemInfo(int itemID)    {
         for(ItemDTO item : items) {
             if(item.getItemID() == itemID) {
-                return item;//objekt i DTON
+                return item;
             }
         }
         return null;
