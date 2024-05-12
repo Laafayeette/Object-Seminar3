@@ -62,18 +62,7 @@ public class ItemDTO {
         return quantity;
     }
 
-    /**
-     * Presents a custom printout of the itemDTO.
-     * @return A formatted String with the values of @Link(ItemDTO).
-     */
-    @Override
-    public String toString() {
-        return
-                "Item ID: " + itemID + "\n" +
-                "Item name: " + itemName + "\n" +
-                "Item cost: " + String.format("%.2f", itemPrice) + " SEK\n" +
-                "VAT: " + (100* itemVAT) + "%";
-    }
+
 
     @Override
     public boolean equals(Object obj) {
