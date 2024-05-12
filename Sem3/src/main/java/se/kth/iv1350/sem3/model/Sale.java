@@ -87,15 +87,15 @@ public class Sale {
                     //item.getQuantity = item.getQuantity() + 1;
                     //System.out.println("This is the quantity of the item: " + quantity);
                     System.out.println(item.toString());
-                    String itemName = item.getItemName();
-                    double itemPrice = item.getItemPrice();
-                    double itemVAT = item.getItemVAT();
 
-                    double itemTotalPrice = itemPrice * (1 + itemVAT);
-                    totalVAT += (itemPrice * itemVAT);
+                    ItemDTO updatedItemWithQuantity = new ItemDTO(item.getItemName(), itemID, item.getItemPrice(), item.getItemVAT(), quantity);
+
+                    //double itemTTTprice = calculatePriceAndVATForScannedItem(itemPrice, itemVAT);
+                    double itemTotalPrice = item.getItemPrice() * (1 + item.getItemVAT());
+                    totalVAT += (item.getItemPrice() * item.getItemVAT());
 
                     purchasedItems.remove(item);
-                    purchasedItems.add(new ItemDTO(itemName, itemID, itemPrice, itemVAT, quantity));
+                    purchasedItems.add(updatedItemWithQuantity);
                     /**
                      * Vad ifall jag hade tagit bort item:et, och skapat ett nytt objekt av samma itemDTO
                      * fast denna gång med en specifierad quantity av den itemDTO?
