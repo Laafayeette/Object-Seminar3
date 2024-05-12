@@ -28,7 +28,6 @@ public class Receipt {
         this.saleDTO = saleDTO;
         this.payment = payment;
         timeOfSale = LocalDateTime.now();
-        System.out.println(getReceipt());
     }
 
     /**
@@ -38,7 +37,7 @@ public class Receipt {
     public String getReceipt() {
         StringBuilder receiptBuilder = new StringBuilder();
         receiptBuilder.append("\n-------------------Begin Receipt------------------------\n");
-        bundleQuantitiesOfSameItem(receiptBuilder);
+        itemInfoGenerator(receiptBuilder);
         gatherReceiptInformation(receiptBuilder);
         printTimeOfSale(receiptBuilder);
         whoAmI(receiptBuilder);
@@ -73,33 +72,12 @@ public class Receipt {
         receiptBuilder.append("Total VAT: ").append(df.format(saleDTO.getTotalVAT())).append(" SEK\n\n");
     }
 
-    private void bundleQuantitiesOfSameItem(StringBuilder receiptBuilder) {
-        Map<String, Double> itemTotalPrices = new HashMap<>();
-
+    private void itemInfoGenerator(StringBuilder receiptBuilder) {
         for (ItemDTO item : saleDTO.getPurchasedItems()) {
             String itemName = item.getItemName();
             double multipliedPriceOfSameItem = item.getItemPrice() * item.getQuantity();
 
-            itemTotalPrices.put(itemName, itemTotalPrices.getOrDefault(itemName, 0.0) + multipliedPriceOfSameItem);
-        }
-
-        // Print the aggregated information for each item
-        for (String itemName : itemTotalPrices.keySet()) {
-            double totalPrice = itemTotalPrices.get(itemName);
-            double pricePerItem = totalPrice / getTotalQuantity(saleDTO.getPurchasedItems(), itemName);
-
-            receiptBuilder.append(String.format("%s %d x %.2f  %.2f SEK%n", itemName, getTotalQuantity(saleDTO.getPurchasedItems(), itemName), pricePerItem, totalPrice));
+            receiptBuilder.append(String.format("%s %d x %.2f  %.2f SEK%n", itemName, item.getQuantity(), item.getItemPrice(), multipliedPriceOfSameItem));
         }
     }
-
-    private int getTotalQuantity(List<ItemDTO> items, String itemName) {
-        int totalQuantity = 0;
-        for (ItemDTO item : items) {
-            if (item.getItemName().equals(itemName)) {
-                totalQuantity += item.getQuantity();
-            }
-        }
-        return totalQuantity;
-    }
-
 }
