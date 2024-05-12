@@ -157,11 +157,6 @@ public class ControllerTest {
         assertEquals("The totals are not equal", expectedTotalprice, calculatedTotalPrice, 0.001);
     }
 
-
-    /**
-     * This test is meant to fail now, because we are no longer duplicating any items..
-     */
-
     @Test
     void testScanSizeOfListAfterScanSameItem() {
         contr = new Controller();
