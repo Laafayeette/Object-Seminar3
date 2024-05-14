@@ -56,10 +56,15 @@ public class Controller {
             return saleDTO;
         }
         else {
-            ItemDTO itemDTO = invSys.fetchItemInfo(itemID);
-            SaleDTO saleDTO = sale.updateSale(itemDTO);
-            return saleDTO;
+            try {
+                ItemDTO itemDTO = invSys.fetchItemInfo(itemID);
+                SaleDTO saleDTO = sale.updateSale(itemDTO);
+                return saleDTO;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        return null;
     }
 
     /**
