@@ -2,6 +2,7 @@ package se.kth.iv1350.sem3.controller;
 
 import se.kth.iv1350.sem3.integration.AccountingSystem;
 import se.kth.iv1350.sem3.integration.InventorySystem;
+import se.kth.iv1350.sem3.integration.ItemInvalidException;
 import se.kth.iv1350.sem3.integration.Printer;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
@@ -60,8 +61,8 @@ public class Controller {
                 ItemDTO itemDTO = invSys.fetchItemInfo(itemID);
                 SaleDTO saleDTO = sale.updateSale(itemDTO);
                 return saleDTO;
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ItemInvalidException exc) {
+                exc.printStackTrace();
             }
         }
         return null;
