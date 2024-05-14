@@ -1,6 +1,7 @@
 package se.kth.iv1350.sem3.startup;
 
 import se.kth.iv1350.sem3.controller.Controller;
+import se.kth.iv1350.sem3.view.ErrorMessageHandler;
 import se.kth.iv1350.sem3.view.View;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Main {
      * Creates instances of the @Link(Controller) and passes it to the @Link(View) class' constructor to initiate the View object.
      * @param args The Command-line arguments to the program.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ErrorMessageHandler {
 
         Controller contr = new Controller();
         View view = new View(contr);
