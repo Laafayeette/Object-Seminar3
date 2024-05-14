@@ -26,7 +26,7 @@ public class View {
         this.contr = contr;
     }
 
-    public void sampleExecution() {
+    public void sampleExecution() throws ErrorMessageHandler {
         contr.startSale();
         int minQuantity = 1;
         int maxQuantity = 3;
@@ -35,9 +35,14 @@ public class View {
             //quantity = random.nextInt(maxQuantity - minQuantity + 1) + minQuantity;
             for(int j= 1; j <= quantity; j++) {
                 System.out.println("---------------------Scanning item with ID " + i + "---------------------------");
-                SaleDTO saleDTO = contr.scanItem(i);
-                printItemDTOString(saleDTO.getItemDTO(i));
-                printSaleDTO(saleDTO);
+                try {
+                    SaleDTO saleDTO = contr.scanItem(i);
+                    printItemDTOString(saleDTO.getItemDTO(i));
+                    printSaleDTO(saleDTO);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw new ErrorMessageHandler(i);
+                }
             }
             System.out.println("\nQuantity of this item sold: " + quantity);
         }
