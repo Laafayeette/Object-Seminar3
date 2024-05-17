@@ -65,11 +65,11 @@ public class Controller {
                 //log this in the view.
                 System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
                 logger.log(e);
-                throw new ItemInvalidException(itemID);
+                throw e;
             } catch(DatabaseCallException e) {
                 System.out.println("Caught the DatabaseCallException in in ScanItem (Controller) and about to log and throw the exception to View");
                 logger.log(e);
-                throw new DatabaseCallException("Database call failure");
+                throw e;
             }
         }
         //return null;
