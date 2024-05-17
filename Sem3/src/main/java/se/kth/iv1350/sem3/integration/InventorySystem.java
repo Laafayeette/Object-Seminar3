@@ -39,12 +39,17 @@ public class InventorySystem {
      * @return An item of type @Link(ItemDTO) representing the entirety of the item that was resulted from the fetching.
      */
     public ItemDTO fetchItemInfo(int itemID) throws ItemInvalidException, DatabaseCallException   {
+        if(itemID == 7){
+            System.out.println("You have reached the itemID == 7 block, in fetchItemInfo (InventorySystem");
+            throw new DatabaseCallException("Database call failed, please try again or check your connection.");
+        }
         for(ItemDTO item : items) {
             if(item.getItemID() == itemID) {
                 return item;
             }
         }
         //If we cant find with the item then we throw the exception..!!!!
+        System.out.println("About to throw an ItemInvalidException in fetchItemInfo to Controller (InventorySystem)");
         throw new ItemInvalidException(itemID);
     }
 

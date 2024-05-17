@@ -1,9 +1,11 @@
 package se.kth.iv1350.sem3.view;
 
 import se.kth.iv1350.sem3.controller.Controller;
+import se.kth.iv1350.sem3.integration.DatabaseCallException;
 import se.kth.iv1350.sem3.integration.ItemInvalidException;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
+import se.kth.iv1350.sem3.util.LogHandler;
 
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -17,6 +19,7 @@ public class View {
 
     private final Controller contr;
     private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
+    private LogHandler logHandler = new LogHandler();
 
 
     /**
@@ -33,7 +36,7 @@ public class View {
         int minQuantity = 1;
         int maxQuantity = 3;
         Random random = new Random();
-        for(int i = 7, quantity = 1; i <8; i++) {
+        for(int i = 8, quantity = 1; i <9; i++) {
             //quantity = random.nextInt(maxQuantity - minQuantity + 1) + minQuantity;
             for(int j= 1; j <= quantity; j++) {
                 System.out.println("---------------------Scanning item with ID " + i + "---------------------------");
@@ -43,10 +46,14 @@ public class View {
                     printSaleDTO(saleDTO);
                 } catch (ItemInvalidException e) {
                     e.printStackTrace();
-                    errorMsgHandler.showMessage("Could not scan item, no such item exists. Please try another item.");
-                    //throw new ErrorMessageHandler(i);
+                    System.out.println("Caught the ItemInvalidException in in View, about to errorMessage it");
+                    errorMsgHandler.showMessage("Could not scan item, no such item exists in store. Please try another item.");
+                } catch (DatabaseCallException exc) {
+                    System.out.println("Caugh the DatabaseCallException in in View, about to errorMessage it and log");
+                    printToLogAndView("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
             }
             System.out.println("\nQuantity of this item sold: " + quantity);
         }
@@ -54,6 +61,11 @@ public class View {
         printEndSale();
         double change = contr.pay(200, "cash");
         printReturnChangeToCustomer(change);
+    }
+
+    private void printToLogAndView(String errorMsg) {
+        errorMsgHandler.showMessage(errorMsg);
+        logHandler.log(errorMsg);
     }
 
     private void printReturnChangeToCustomer(double change) {

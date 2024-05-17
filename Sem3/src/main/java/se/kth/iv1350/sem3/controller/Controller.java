@@ -1,9 +1,6 @@
 package se.kth.iv1350.sem3.controller;
 
-import se.kth.iv1350.sem3.integration.AccountingSystem;
-import se.kth.iv1350.sem3.integration.InventorySystem;
-import se.kth.iv1350.sem3.integration.ItemInvalidException;
-import se.kth.iv1350.sem3.integration.Printer;
+import se.kth.iv1350.sem3.integration.*;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.model.Payment;
@@ -55,7 +52,7 @@ public class Controller {
      * @param itemID The ID of the item to be scanned.
      * @return A saleDTO representing the updated state of the sale after scanning the item.
      */
-    public SaleDTO scanItem(int itemID) throws ItemInvalidException {
+    public SaleDTO scanItem(int itemID) throws ItemInvalidException, DatabaseCallException {
         if(sale.findItemInfo(itemID)) {
             SaleDTO saleDTO = sale.increaseQuantity(itemID);
             return saleDTO;
@@ -66,10 +63,14 @@ public class Controller {
                 SaleDTO saleDTO = sale.updateSale(itemDTO);
                 return saleDTO;
             } catch (ItemInvalidException e) {
+                //log this in the view.
+                System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
                 logger.log("Could not perform... llolol");
                 throw new ItemInvalidException(itemID);
-                //e.printStackTrace();
-                //System.out.println("This is a system out print; the error message generated in the Controller");
+            } catch(DatabaseCallException exc) {
+                System.out.println("Caught the DatabaseCallException in in ScanItem (Controller) and about to log and throw the exception to View");
+                logger.log("Could not perform database operation");
+                throw new DatabaseCallException("Database call failure");
             }
         }
         //return null;
