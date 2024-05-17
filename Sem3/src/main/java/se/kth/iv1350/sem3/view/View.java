@@ -36,7 +36,7 @@ public class View {
         int minQuantity = 1;
         int maxQuantity = 3;
         Random random = new Random();
-        for(int i = 8, quantity = 1; i <9; i++) {
+        for(int i = 7, quantity = 1; i <8; i++) {
             //quantity = random.nextInt(maxQuantity - minQuantity + 1) + minQuantity;
             for(int j= 1; j <= quantity; j++) {
                 System.out.println("---------------------Scanning item with ID " + i + "---------------------------");
@@ -46,11 +46,11 @@ public class View {
                     printSaleDTO(saleDTO);
                 } catch (ItemInvalidException e) {
                     e.printStackTrace();
-                    System.out.println("Caught the ItemInvalidException in in View, about to errorMessage it");
+                    System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item, no such item exists in store. Please try another item.");
-                } catch (DatabaseCallException exc) {
-                    System.out.println("Caugh the DatabaseCallException in in View, about to errorMessage it and log");
-                    printToLogAndView("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
+                } catch (DatabaseCallException e) {
+                    System.out.println("Caught the DatabaseCallException in in View, about to errorMessage it and log");
+                    printToLogAndView("Failed to scan item, there might be an error in the system. Please try again or get supervisor", e);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -63,9 +63,9 @@ public class View {
         printReturnChangeToCustomer(change);
     }
 
-    private void printToLogAndView(String errorMsg) {
+    private void printToLogAndView(String errorMsg, Exception e) {
         errorMsgHandler.showMessage(errorMsg);
-        logHandler.log(errorMsg);
+        logHandler.log(e);
     }
 
     private void printReturnChangeToCustomer(double change) {

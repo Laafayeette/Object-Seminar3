@@ -8,7 +8,6 @@ import se.kth.iv1350.sem3.model.Receipt;
 import se.kth.iv1350.sem3.model.Sale;
 import se.kth.iv1350.sem3.model.SaleLog;
 import se.kth.iv1350.sem3.util.LogHandler;
-import se.kth.iv1350.sem3.view.ErrorMessageHandler;
 
 /**
  * This class represents the communication endpoint between the view layer and the rest of the program.
@@ -65,11 +64,11 @@ public class Controller {
             } catch (ItemInvalidException e) {
                 //log this in the view.
                 System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
-                logger.log("Could not perform... llolol");
+                logger.log(e);
                 throw new ItemInvalidException(itemID);
-            } catch(DatabaseCallException exc) {
+            } catch(DatabaseCallException e) {
                 System.out.println("Caught the DatabaseCallException in in ScanItem (Controller) and about to log and throw the exception to View");
-                logger.log("Could not perform database operation");
+                logger.log(e);
                 throw new DatabaseCallException("Database call failure");
             }
         }
