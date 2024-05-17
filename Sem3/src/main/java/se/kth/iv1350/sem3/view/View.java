@@ -47,7 +47,7 @@ public class View {
                 } catch (ItemInvalidException e) {
                     e.printStackTrace();
                     System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
-                    errorMsgHandler.showMessage("Could not scan item, no such item exists in store. Please try another item.");
+                    errorMsgHandler.showMessage("Could not scan item, no such item exists in store. Please try another item..");
                 } catch (DatabaseCallException e) {
                     System.out.println("Caught the DatabaseCallException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
