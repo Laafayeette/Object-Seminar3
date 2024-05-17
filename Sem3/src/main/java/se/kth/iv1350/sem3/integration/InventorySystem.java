@@ -38,7 +38,7 @@ public class InventorySystem {
      * @param itemID The ID of the item to be scanned.
      * @return An item of type @Link(ItemDTO) representing the entirety of the item that was resulted from the fetching.
      */
-    public ItemDTO fetchItemInfo(int itemID) throws ItemInvalidException   {
+    public ItemDTO fetchItemInfo(int itemID) throws ItemInvalidException, DatabaseCallException   {
         for(ItemDTO item : items) {
             if(item.getItemID() == itemID) {
                 return item;

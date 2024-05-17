@@ -1,5 +1,6 @@
 package se.kth.iv1350.sem3.model;
 
+import se.kth.iv1350.sem3.integration.DatabaseCallException;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 
@@ -98,6 +99,7 @@ public class Sale {
                     return saleDTO;
                 }
             }
+            //throw new DatabaseCallException("")
         System.out.println("A String never meant to be reached");
         this.saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, totalVAT);
         return saleDTO;

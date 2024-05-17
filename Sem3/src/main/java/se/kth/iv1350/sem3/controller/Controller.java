@@ -10,6 +10,8 @@ import se.kth.iv1350.sem3.model.Payment;
 import se.kth.iv1350.sem3.model.Receipt;
 import se.kth.iv1350.sem3.model.Sale;
 import se.kth.iv1350.sem3.model.SaleLog;
+import se.kth.iv1350.sem3.util.LogHandler;
+import se.kth.iv1350.sem3.view.ErrorMessageHandler;
 
 /**
  * This class represents the communication endpoint between the view layer and the rest of the program.
@@ -24,6 +26,7 @@ public class Controller {
 
     private Sale sale;
 
+    private LogHandler logger;
 
     /**
      * Constructor for the Controller class. Initiates the program by instantiating objects of the program,
@@ -34,6 +37,7 @@ public class Controller {
         invSys = new InventorySystem();
         printer = new Printer();
         saleLog = new SaleLog();
+        this.logger = new LogHandler();
     }
 
     /**
@@ -51,7 +55,7 @@ public class Controller {
      * @param itemID The ID of the item to be scanned.
      * @return A saleDTO representing the updated state of the sale after scanning the item.
      */
-    public SaleDTO scanItem(int itemID) {
+    public SaleDTO scanItem(int itemID) throws ItemInvalidException {
         if(sale.findItemInfo(itemID)) {
             SaleDTO saleDTO = sale.increaseQuantity(itemID);
             return saleDTO;
@@ -61,11 +65,14 @@ public class Controller {
                 ItemDTO itemDTO = invSys.fetchItemInfo(itemID);
                 SaleDTO saleDTO = sale.updateSale(itemDTO);
                 return saleDTO;
-            } catch (ItemInvalidException exc) {
-                exc.printStackTrace();
+            } catch (ItemInvalidException e) {
+                logger.log("Could not perform... llolol");
+                throw new ItemInvalidException(itemID);
+                //e.printStackTrace();
+                //System.out.println("This is a system out print; the error message generated in the Controller");
             }
         }
-        return null;
+        //return null;
     }
 
     /**

@@ -1,6 +1,7 @@
 package se.kth.iv1350.sem3.view;
 
 import se.kth.iv1350.sem3.controller.Controller;
+import se.kth.iv1350.sem3.integration.ItemInvalidException;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 
@@ -15,6 +16,7 @@ import java.util.Random;
 public class View {
 
     private final Controller contr;
+    private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
 
 
     /**
@@ -26,12 +28,12 @@ public class View {
         this.contr = contr;
     }
 
-    public void sampleExecution() throws ErrorMessageHandler {
+    public void sampleExecution() {
         contr.startSale();
         int minQuantity = 1;
         int maxQuantity = 3;
         Random random = new Random();
-        for(int i = 1, quantity = 2; i <5; i++) {
+        for(int i = 7, quantity = 1; i <8; i++) {
             //quantity = random.nextInt(maxQuantity - minQuantity + 1) + minQuantity;
             for(int j= 1; j <= quantity; j++) {
                 System.out.println("---------------------Scanning item with ID " + i + "---------------------------");
@@ -39,10 +41,12 @@ public class View {
                     SaleDTO saleDTO = contr.scanItem(i);
                     printItemDTOString(saleDTO.getItemDTO(i));
                     printSaleDTO(saleDTO);
-                } catch (Exception e) {
+                } catch (ItemInvalidException e) {
                     e.printStackTrace();
-                    throw new ErrorMessageHandler(i);
+                    errorMsgHandler.showMessage("Could not scan item, no such item exists. Please try another item.");
+                    //throw new ErrorMessageHandler(i);
                 }
+
             }
             System.out.println("\nQuantity of this item sold: " + quantity);
         }
