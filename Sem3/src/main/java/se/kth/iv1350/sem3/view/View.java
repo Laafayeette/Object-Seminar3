@@ -65,6 +65,39 @@ public class View {
         printReturnChangeToCustomer(change);
     }
 
+    public void sampleExecution1() {
+        contr.startSale();
+        int minQuantity = 1;
+        int maxQuantity = 3;
+        Random random = new Random();
+        for(int i = 1, quantity = 2; i < 5; i++) {
+            //quantity = random.nextInt(maxQuantity - minQuantity + 1) + minQuantity;
+            for(int j= 1; j <= quantity; j++) {
+                System.out.println("---------------------Scanning item with ID " + i + "---------------------------");
+                try {
+                    SaleDTO saleDTO = contr.scanItem(i);
+                    printItemDTOString(saleDTO.getItemDTO(i));
+                    printSaleDTO(saleDTO);
+                } catch (ItemInvalidException e) {
+                    e.printStackTrace();
+                    System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
+                    errorMsgHandler.showMessage("Could not scan item, no such item exists in store. Please try another item..");
+                } catch (DatabaseCallException e) {
+                    System.out.println("Caught the DatabaseCallException in in View, about to errorMessage it and log");
+                    errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("\nQuantity of this item sold: " + quantity);
+        }
+        contr.endSale();
+        printEndSale();
+        double change = contr.pay(200, "cash");
+        printReturnChangeToCustomer(change);
+    }
+
+
     private void printToLogAndView(String errorMsg, Exception e) {
         errorMsgHandler.showMessage(errorMsg);
         logHandler.log(e);
