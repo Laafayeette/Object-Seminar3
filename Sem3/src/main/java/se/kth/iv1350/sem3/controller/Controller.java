@@ -3,10 +3,7 @@ package se.kth.iv1350.sem3.controller;
 import se.kth.iv1350.sem3.integration.*;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
-import se.kth.iv1350.sem3.model.Payment;
-import se.kth.iv1350.sem3.model.Receipt;
-import se.kth.iv1350.sem3.model.Sale;
-import se.kth.iv1350.sem3.model.SaleLog;
+import se.kth.iv1350.sem3.model.*;
 import se.kth.iv1350.sem3.util.LogHandler;
 
 /**
@@ -99,11 +96,11 @@ public class Controller {
      */
     public double pay(double amount, String paymentMethod) {
         System.out.println("\n-------------------Begin Payment------------------------" + "\nCustomer pays: " + amount + " SEK via " + paymentMethod);
-        Receipt receipt = sale.pay(amount, paymentMethod);
-        printer.print(receipt);
+        PaymentResult paymentResult = sale.pay(amount, paymentMethod);
+        printer.print(paymentResult.getReceipt());
         saleLog.registerSaleLog(sale.getSaleDTO());
         updateExternalSystems();
-        return payment.getCustomerChange();
+        return paymentResult.getCustomerChange();
     }
 
     public Sale getSale() {

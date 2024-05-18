@@ -129,10 +129,10 @@ public class Sale {
         return saleDTO;
     }
 
-    public Receipt pay(double amount, String paymentMethod) {
+    public PaymentResult pay(double amount, String paymentMethod) {
         double currentTotalPrice = getCurrentTotalPrice();
         Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
-        return receipt;
+        return new PaymentResult(receipt, payment.getCustomerChange());
     }
 }
