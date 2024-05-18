@@ -101,8 +101,18 @@ public class Controller {
      * @param paymentMethod Payment method customer enters, usually cash.
      * @return Change given back to the customer
      */
-    public double pay(double amount, String paymentMethod) {
-        PaymentResult paymentResult = sale.pay(amount, paymentMethod);
+    public double pay(double amount, String paymentMethod) throws DatabaseCallException {
+        PaymentStrategy paymentStrategy;
+        if(paymentMethod.equalsIgnoreCase("creditCard")) {
+             paymentStrategy = new CreditCardPayment();
+        }
+        else if(paymentMethod.equalsIgnoreCase("cash")) {
+             paymentStrategy = new CashPayment();
+        }
+        else {
+            throw new DatabaseCallException("Invalid payment method: " + paymentMethod);
+        }
+        PaymentResult paymentResult = sale.pay(amount, paymentMethod, paymentStrategy);
         printer.print(paymentResult.getReceipt());
         saleLog.registerSaleLog(sale.getSaleDTO());
         updateExternalSystems();

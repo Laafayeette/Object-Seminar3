@@ -61,8 +61,15 @@ public class View {
         }
         contr.endSale();
         printEndSale();
-        double change = contr.pay(200, "cash");
-        printReturnChangeToCustomer(change);
+        double amount = 200;
+        String paymentMethod = "Cash";
+        System.out.println("\n-------------------Begin Payment------------------------" + "\nCustomer pays: " + amount + " SEK via " + paymentMethod);
+        try {
+            double change = contr.pay(amount, paymentMethod);
+            printReturnChangeToCustomer(change);
+        } catch(DatabaseCallException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sampleExecution1() {
@@ -93,11 +100,15 @@ public class View {
         }
         contr.endSale();
         printEndSale();
-        int amount = 200;
-        String paymentMethod = "cash";
+        double amount = 57.81;
+        String paymentMethod = "Creditcard";
         System.out.println("\n-------------------Begin Payment------------------------" + "\nCustomer pays: " + amount + " SEK via " + paymentMethod);
-        double change = contr.pay(200, "cash");
-        printReturnChangeToCustomer(change);
+        try {
+            double change = contr.pay(amount, paymentMethod);
+            printReturnChangeToCustomer(change);
+        } catch(DatabaseCallException e) {
+            e.printStackTrace();
+        }
     }
 
 

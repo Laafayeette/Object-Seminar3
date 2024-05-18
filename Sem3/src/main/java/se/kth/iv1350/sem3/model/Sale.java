@@ -22,6 +22,8 @@ public class Sale {
     //En lista av observers
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
+    private PaymentStrategy paymentStrategy;
+
 
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
@@ -132,9 +134,9 @@ public class Sale {
         return saleDTO;
     }
 
-    public PaymentResult pay(double amount, String paymentMethod) {
+    public PaymentResult pay(double amount, String paymentMethod, PaymentStrategy paymentStrategy) throws DatabaseCallException {
         double currentTotalPrice = getCurrentTotalPrice();
-        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice, paymentStrategy);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
         notifyObservers();
         return new PaymentResult(receipt, payment.getCustomerChange());
