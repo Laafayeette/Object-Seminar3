@@ -93,6 +93,9 @@ public class View {
         }
         contr.endSale();
         printEndSale();
+        int amount = 200;
+        String paymentMethod = "cash";
+        System.out.println("\n-------------------Begin Payment------------------------" + "\nCustomer pays: " + amount + " SEK via " + paymentMethod);
         double change = contr.pay(200, "cash");
         printReturnChangeToCustomer(change);
     }
