@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-import se.kth.iv1350.sem3.integration.AccountingSystem;
-import se.kth.iv1350.sem3.integration.InventorySystem;
-import se.kth.iv1350.sem3.integration.Printer;
+import se.kth.iv1350.sem3.integration.*;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.model.Payment;
@@ -158,7 +156,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testScanSizeOfListAfterScanSameItem() {
+    void testScanSizeOfListAfterScanSameItem() throws ItemInvalidException, DatabaseCallException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -178,7 +176,7 @@ public class ControllerTest {
 
 
     @Test
-    void testScanItemDifferentLists() {
+    void testScanItemDifferentLists() throws ItemInvalidException, DatabaseCallException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -205,7 +203,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testScanItemSameLists() {
+    void testScanItemSameLists() throws ItemInvalidException, DatabaseCallException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -229,7 +227,7 @@ public class ControllerTest {
 
 
     @Test
-    void testPayChange() {
+    void testPayChange() throws ItemInvalidException, DatabaseCallException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -257,7 +255,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testPayPrice() {
+    void testPayPrice() throws ItemInvalidException, DatabaseCallException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -288,7 +286,7 @@ public class ControllerTest {
      * Should in reality throw error, but we are simply testing that it works as intended.
      */
     @Test
-    void testPayPriceNegative() {
+    void testPayPriceNegative() throws ItemInvalidException, DatabaseCallException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -316,7 +314,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testPayPriceZeroVAT() {
+    void testPayPriceZeroVAT() throws ItemInvalidException, DatabaseCallException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
