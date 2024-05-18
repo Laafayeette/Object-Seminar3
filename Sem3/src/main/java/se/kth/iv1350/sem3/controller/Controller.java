@@ -98,7 +98,6 @@ public class Controller {
      * @return Change given back to the customer
      */
     public double pay(double amount, String paymentMethod) {
-        System.out.println("\n-------------------Begin Payment------------------------" + "\nCustomer pays: " + amount + " SEK via " + paymentMethod);
         double currentTotalPrice = sale.getCurrentTotalPrice();
         Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
         Receipt receipt = new Receipt(sale.getSaleDTO(), payment);
