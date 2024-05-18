@@ -5,4 +5,8 @@ public class CashPayment implements PaymentStrategy{
     public double calculateCustomerchange(double amount, double currentTotalPrice) {
         return amount - currentTotalPrice;
     }
+
+
+
+
 }
