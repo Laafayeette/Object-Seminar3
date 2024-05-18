@@ -5,6 +5,10 @@ import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.model.*;
 import se.kth.iv1350.sem3.util.LogHandler;
+import se.kth.iv1350.sem3.view.TotalRevenueView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents the communication endpoint between the view layer and the rest of the program.
@@ -20,6 +24,8 @@ public class Controller {
     private Sale sale;
 
     private LogHandler logger;
+
+    private List<SaleObserver> saleObservers = new ArrayList<>();
 
     /**
      * Constructor for the Controller class. Initiates the program by instantiating objects of the program,
@@ -38,6 +44,7 @@ public class Controller {
      */
     public void startSale() {
         sale = new Sale();
+        sale.addSaleObservers(saleObservers);
     }
 
 
@@ -107,5 +114,7 @@ public class Controller {
         return sale;
     }
 
-
+    public void addSaleObserver(SaleObserver saleObserver) {
+        saleObservers.add(saleObserver);
+    }
 }

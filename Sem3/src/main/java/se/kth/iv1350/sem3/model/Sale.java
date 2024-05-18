@@ -19,6 +19,7 @@ public class Sale {
 
     private SaleDTO saleDTO;
 
+    //En lista av observers
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
 
@@ -148,7 +149,30 @@ public class Sale {
         }
     }
 
+    /**
+     * Adds a given sale observer into the list of sale observers.
+     * @param saleObserver The given sale observer to be added to list.
+     */
     public void addSaleObserver(SaleObserver saleObserver) {
         this.saleObservers.add(saleObserver);
+    }
+
+    /**
+     * Adds a list of sale observers into the list of sale observers. Rarely used.
+     * @param observers The given list of sale observers to be added to list.
+     */
+    public void addObservers(List<SaleObserver> observers) {
+        this.saleObservers.addAll(observers);
+    }
+
+    /**
+     * The list of sale observers to be added to the current sale object.
+     * This list is provided from the Controller class because the Controller permeates all instances of sales in the program,
+     * and therefore when the sale is started, the current sale object is simply provided with the list of observers it needs.
+     * It does not itself perform any logic to fetch any observers, that is the Controller's job.
+     * @param saleObservers The list of observers provided from Controller.
+     */
+    public void addSaleObservers(List<SaleObserver> saleObservers) {
+        this.saleObservers.addAll(saleObservers);
     }
 }
