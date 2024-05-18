@@ -25,7 +25,7 @@ class PaymentTest {
         double amount = 200;
         String paymentMethod = "Cash";
         double currentTotalPrice = 150;
-        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice, new CashPayment());
 
         assertEquals(payment.getAmount(), amount);
     }
@@ -35,7 +35,7 @@ class PaymentTest {
         double amount = 200;
         String paymentMethod = "Cash";
         double currentTotalPrice = 150;
-        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice, new CashPayment());
 
         assertEquals(payment.getCurrentTotalPrice(), currentTotalPrice);
     }
@@ -47,7 +47,7 @@ class PaymentTest {
         double currentTotalPrice = 150;
         double expectedChange = amount - currentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice, new CashPayment());
 
         assertEquals(payment.getCustomerChange(), expectedChange);
     }
@@ -59,7 +59,7 @@ class PaymentTest {
         double currentTotalPrice = 150;
         double expectedChange = amount - currentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice, new CashPayment());
 
         assertEquals(payment.getPaymentMethod(), paymentMethod);
     }
@@ -71,7 +71,7 @@ class PaymentTest {
         double currentTotalPrice = 150;
         double expectedChange = amount - currentTotalPrice;
 
-        Payment payment = new Payment(amount, null, currentTotalPrice);
+        Payment payment = new Payment(amount, null, currentTotalPrice, new CashPayment());
 
         assertFalse(payment.getPaymentMethod() == paymentMethod);
     }
@@ -83,7 +83,7 @@ class PaymentTest {
         double currentTotalPrice = 150;
         double expectedChange = amount - currentTotalPrice;
 
-        Payment payment = new Payment(amount, null, currentTotalPrice);
+        Payment payment = new Payment(amount, null, currentTotalPrice, new CashPayment());
 
         assertNull(payment.getPaymentMethod());
     }
@@ -95,7 +95,7 @@ class PaymentTest {
         double currentTotalPrice = 150;
         double expectedChange = amount - currentTotalPrice;
 
-        Payment payment = new Payment(amount, null, currentTotalPrice);
+        Payment payment = new Payment(amount, null, currentTotalPrice, new CashPayment());
 
         assertNotNull(payment.getCustomerChange());
     }
@@ -107,7 +107,7 @@ class PaymentTest {
         double currentTotalPrice = 150;
         double expectedChange = amount - currentTotalPrice;
 
-        Payment payment = new Payment(amount, null, currentTotalPrice);
+        Payment payment = new Payment(amount, null, currentTotalPrice, new CashPayment());
 
         assertNotNull(payment.getCurrentTotalPrice());
     }

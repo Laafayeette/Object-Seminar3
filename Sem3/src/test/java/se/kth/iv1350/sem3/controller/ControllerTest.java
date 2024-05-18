@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import se.kth.iv1350.sem3.integration.*;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
+import se.kth.iv1350.sem3.model.CashPayment;
 import se.kth.iv1350.sem3.model.Payment;
 import se.kth.iv1350.sem3.model.Sale;
 import se.kth.iv1350.sem3.model.SaleLog;
@@ -244,7 +245,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 50.
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         payment.getCustomerChange();
 
@@ -272,7 +273,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 50.
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         payment.getCustomerChange();
 
@@ -303,7 +304,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 50.
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         payment.getCustomerChange();
 
@@ -331,7 +332,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 0
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice);
+        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         double changeFromPay = payment.getCustomerChange();
 

@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
-import se.kth.iv1350.sem3.model.Receipt;
-import se.kth.iv1350.sem3.model.Payment;
-import se.kth.iv1350.sem3.model.Sale;
+import se.kth.iv1350.sem3.model.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -69,8 +67,9 @@ public class PrinterTest {
 
         double currentTotalPrice = item1Price;  //5 kr
 
+
         SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
-        Payment payment = new Payment(150, "Cash", currentTotalPrice);
+        Payment payment = new Payment(150, "Cash", currentTotalPrice, new CashPayment());
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);
@@ -85,6 +84,8 @@ public class PrinterTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
+        PaymentStrategy paymentStrategy = new CashPayment();
+
         ItemDTO item1 = new ItemDTO("Gurka", 2, 5.0, 0.25, 1);
         purchasedItems.add(item1);
 
@@ -94,7 +95,7 @@ public class PrinterTest {
         double currentTotalPrice = item1Price;  //5 kr
 
         SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
-        Payment payment = new Payment(150, "Cash", currentTotalPrice);
+        Payment payment = new Payment(150, "Cash", currentTotalPrice, paymentStrategy);
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);
