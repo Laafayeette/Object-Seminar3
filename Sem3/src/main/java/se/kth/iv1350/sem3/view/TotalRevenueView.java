@@ -11,4 +11,8 @@ public class TotalRevenueView implements SaleObserver {
         totalRevenue = totalRevenue + revenue;
         System.out.println("Total Revenue: " + totalRevenue + " SEK");
     }
+
+    public double getTotalRevenue() {
+        return totalRevenue;
+    }
 }
