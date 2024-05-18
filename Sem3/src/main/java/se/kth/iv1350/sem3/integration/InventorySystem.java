@@ -13,11 +13,11 @@ public class InventorySystem {
     private double itemVAT;
     private int quantity;
 
-    private List<ItemDTO> items = new ArrayList<>();
+    private List<ItemDTO> itemsInStore = new ArrayList<>();
 
     /**
      * Constructor for the Inventory System class, initialized by the Controller's constructor.
-     * Initializes the inventory system by adding items to the store.
+     * Initializes the inventory system by adding itemsInStore to the store.
      */
     public InventorySystem() {
         addItemsToStore();
@@ -27,10 +27,10 @@ public class InventorySystem {
      * Generating dummy data
      */
     private void addItemsToStore() {
-        items.add(new ItemDTO("Banana", 1, 7.99, 0.06));
-        items.add(new ItemDTO("Apple", 2, 3.49, 0.12));
-        items.add(new ItemDTO("Orange", 3, 4.99, 0.06));
-        items.add(new ItemDTO("Grapes", 4, 8.99, 0.25));
+        itemsInStore.add(new ItemDTO("Banana", 1, 7.99, 0.06));
+        itemsInStore.add(new ItemDTO("Apple", 2, 3.49, 0.12));
+        itemsInStore.add(new ItemDTO("Orange", 3, 4.99, 0.06));
+        itemsInStore.add(new ItemDTO("Grapes", 4, 8.99, 0.25));
     }
 
     /**
@@ -43,7 +43,7 @@ public class InventorySystem {
             System.out.println("You have reached the itemID == 7 block, in fetchItemInfo (InventorySystem");
             throw new DatabaseCallException("Database call failed, please try again or check your connection.");
         }
-        for(ItemDTO item : items) {
+        for(ItemDTO item : itemsInStore) {
             if(item.getItemID() == itemID) {
                 return item;
             }
@@ -80,6 +80,6 @@ public class InventorySystem {
     }
 
     public List<ItemDTO> getItemList() {
-        return items;
+        return itemsInStore;
     }
 }
