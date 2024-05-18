@@ -19,6 +19,8 @@ public class Sale {
 
     private SaleDTO saleDTO;
 
+    private List<SaleObserver> saleObservers = new ArrayList<>();
+
 
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
@@ -133,6 +135,20 @@ public class Sale {
         double currentTotalPrice = getCurrentTotalPrice();
         Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
+        notifyObservers();
         return new PaymentResult(receipt, payment.getCustomerChange());
+    }
+
+    /**
+     * Anropar på alla observers i saleObservers (listan) och skickar totala priset till updateTotalRevenue-metoden.
+     */
+    private void notifyObservers() {
+        for(SaleObserver obs : saleObservers) {
+            obs.updateTotalRevenue(getCurrentTotalPrice());
+        }
+    }
+
+    public void addSaleObserver(SaleObserver saleObserver) {
+        this.saleObservers.add(saleObserver);
     }
 }
