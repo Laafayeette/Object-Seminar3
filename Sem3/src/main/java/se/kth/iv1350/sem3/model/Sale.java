@@ -128,4 +128,11 @@ public class Sale {
     public SaleDTO getSaleDTO() {
         return saleDTO;
     }
+
+    public Receipt pay(double amount, String paymentMethod) {
+        double currentTotalPrice = getCurrentTotalPrice();
+        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
+        Receipt receipt = new Receipt(getSaleDTO(), payment);
+        return receipt;
+    }
 }
