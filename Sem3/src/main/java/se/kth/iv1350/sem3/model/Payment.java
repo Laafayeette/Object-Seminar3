@@ -32,7 +32,26 @@ public class Payment {
         return paymentStrategy;
     }
 
-    
+    /**
+     * A getter for the Payment method specified by the {@link PaymentStrategy}.
+     * This method is used by {@link Receipt} class to enable dynamic printout.
+     * The method takes the class name from the class implementing the {@link PaymentStrategy} interface,
+     * and trims the "Payment" section of the string.
+     * @return The trimmed version of the classname, representing the payment method as a String.
+     */
+    public String getPaymentMethod() {
+        String paymentMethodString =  paymentStrategy.getClass().getSimpleName();
+        String trim = "Payment";
+        String trimmedStr = removeSuffix(paymentMethodString, trim);
+        return trimmedStr;
+    }
+
+    private String removeSuffix(String str, String trim) {
+        if (str != null && trim != null && str.endsWith(trim)) {
+            return str.substring(0, str.length() - trim.length());
+        }
+        return str;
+    }
 
     public double getCustomerChange() {
         return paymentStrategy.calculateCustomerchange(amount, currentTotalPrice);
