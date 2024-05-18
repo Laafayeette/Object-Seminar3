@@ -61,7 +61,7 @@ public class Receipt {
         DecimalFormat df = new DecimalFormat("0.00");
         receiptBuilder.append("\rAmount of items: ").append(saleDTO.getPurchasedItems().size()).append("\n");
         printSaleDTOForReceipt(receiptBuilder);
-        receiptBuilder.append(payment.getPaymentMethod() + ": ").append(payment.getAmount()).append(" SEK").append("\n");
+        receiptBuilder.append(payment.getPaymentMethod() +  ": ").append(payment.getAmount()).append(" SEK").append("\n");
         receiptBuilder.append("Change: ").append(df.format(payment.getCustomerChange())).append(" SEK\n");
         receiptBuilder.append("\r\n");
     }

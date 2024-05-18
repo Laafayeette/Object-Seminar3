@@ -134,9 +134,16 @@ public class Sale {
         return saleDTO;
     }
 
-    public PaymentResult pay(double amount, String paymentMethod, PaymentStrategy paymentStrategy) throws DatabaseCallException {
-        double currentTotalPrice = getCurrentTotalPrice();
-        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice, paymentStrategy);
+    /**
+     * Handles the payment for the Sale class.
+     * After the payment has been finalized, the method notifies the observers about the updated state.
+     * Subsequently, it returns an instance of {@link PaymentResult} back to the caller.
+     * @param amount The amount to be paid.
+     * @param paymentStrategy The implementation of the payment method.
+     * @return An instance of {@link PaymentResult}.
+     */
+    public PaymentResult pay(double amount, PaymentStrategy paymentStrategy) {
+        Payment payment = new Payment(amount, getCurrentTotalPrice(), paymentStrategy);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
         notifyObservers();
         return new PaymentResult(receipt, payment.getCustomerChange());
