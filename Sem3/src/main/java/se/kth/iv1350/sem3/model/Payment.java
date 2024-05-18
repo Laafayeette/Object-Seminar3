@@ -5,6 +5,7 @@ public class Payment {
     private final double amount;
     private final String paymentMethod;
     private final double currentTotalPrice;
+    private final PaymentStrategy paymentStrategy;
 
     /**
      * Constructor for the @Link(Payment) class.
@@ -13,20 +14,21 @@ public class Payment {
      * @param paymentMethod The given payment method by which payment should take place.
      * @param currentTotalPrice The total price to be paid for the whole sale.
      */
-    public Payment(double amount, String paymentMethod, double currentTotalPrice) {
+    public Payment(double amount, String paymentMethod, double currentTotalPrice, PaymentStrategy paymentStrategy) {
         this.amount = amount;
         this.paymentMethod = paymentMethod;
         this.currentTotalPrice = currentTotalPrice;
-        getCustomerChange();
+        //getCustomerChange();
+        this.paymentStrategy = paymentStrategy;
     }
 
-    private double calculateCustomerChange(double amount, double currentTotalPrice) {
-        double customerChange = amount - currentTotalPrice;
-        return customerChange;
-    }
+//    private double calculateCustomerChange(double amount, double currentTotalPrice) {
+//        double customerChange = amount - currentTotalPrice;
+//        return customerChange;
+//    }
 
     public double getCustomerChange() {
-        return calculateCustomerChange(this.amount, this.currentTotalPrice);
+        return paymentStrategy.calculateCustomerchange(amount, currentTotalPrice);
     }
 
     public double getAmount() {
