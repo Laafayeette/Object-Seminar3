@@ -3,8 +3,8 @@ package se.kth.iv1350.sem3.model;
 public class PaymentMethodFactory {
 
     private static final PaymentMethodFactory INSTANCE = new PaymentMethodFactory();
-    private PaymentMethodStrategy creditCardPaymentMethod = new CreditCardPaymentMethod();
-    private PaymentMethodStrategy cashPaymentMethod = new CashPaymentMethod();
+    private final PaymentMethodStrategy creditCardPaymentMethod = new CreditCardPaymentMethod();
+    private final PaymentMethodStrategy cashPaymentMethod = new CashPaymentMethod();
 
     private PaymentMethodFactory() {
     }

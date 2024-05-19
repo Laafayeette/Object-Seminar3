@@ -35,16 +35,16 @@ public class InventorySystem {
 
     /**
      * Fetches the item information pertaining to the given item ID, from the external inventory system.
-     * If an item with itemID is 7 is given, the database throws a {@link DatabaseConnetionException}.
+     * If an item with itemID is 7 is given, the database throws a {@link DatabaseConnectionException}.
      * @param itemID The ID of the item to be fetched from the inventory system.
      * @return An item of type {@link ItemDTO} representing the entirety of the item that was resulted from the fetching.
      * @throws ItemInvalidException If the itemID given to be fetched cannot be found in the inventory system.
-     * @throws DatabaseConnetionException If the operation results in a connection error to the database.
+     * @throws DatabaseConnectionException If the operation results in a connection error to the database.
      */
-    public ItemDTO fetchItemInfo(int itemID) throws ItemInvalidException, DatabaseConnetionException {
+    public ItemDTO fetchItemInfo(int itemID) throws ItemInvalidException, DatabaseConnectionException {
         if(itemID == 7){
             System.out.println("You have reached the itemID == 7 block, in fetchItemInfo (InventorySystem");
-            throw new DatabaseConnetionException("Database call failed, please try again or check your connection.");
+            throw new DatabaseConnectionException("Database call failed, please try again or check your connection.");
         }
         for(ItemDTO item : itemsInStore) {
             if(item.getItemID() == itemID) {

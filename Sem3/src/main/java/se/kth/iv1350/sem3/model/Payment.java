@@ -3,30 +3,20 @@ package se.kth.iv1350.sem3.model;
 public class Payment {
 
     private final double amount;
-    //private final String paymentMethod;
     private final double currentTotalPrice;
     private final PaymentMethodStrategy paymentMethodStrategy;
 
     /**
-     * Constructor for the @Link(Payment) class.
+     * Constructor for the {@link Payment} class.
      * Initializes the arguments and calculates the change to give back to the customer.
      * @param amount The amount given from the customer.
-     * //@param paymentMethod The given payment method by which payment should take place.
      * @param currentTotalPrice The total price to be paid for the whole sale.
      */
     public Payment(double amount, double currentTotalPrice, PaymentMethodStrategy paymentMethodStrategy) {
         this.amount = amount;
-        //this.paymentMethod = paymentMethod;
         this.currentTotalPrice = currentTotalPrice;
-        //getCustomerChange();
         this.paymentMethodStrategy = paymentMethodStrategy;
     }
-
-//    private double calculateCustomerChange(double amount, double currentTotalPrice) {
-//        double customerChange = amount - currentTotalPrice;
-//        return customerChange;
-//    }
-
 
     public PaymentMethodStrategy getPaymentStrategy() {
         return paymentMethodStrategy;
@@ -47,6 +37,11 @@ public class Payment {
         return paymentMethodString.replace("PaymentMethod", "");
     }
 
+    /**
+     * Calculates the customer change to be given back to the customer.
+     * Uses the dynamic <code>paymentMethodStrategy</code> to enable different implementations of calculation to be used.
+     * @return The amount of change to be returned to the customer.
+     */
     public double getCustomerChange() {
         return paymentMethodStrategy.calculateCustomerchange(amount, currentTotalPrice);
     }

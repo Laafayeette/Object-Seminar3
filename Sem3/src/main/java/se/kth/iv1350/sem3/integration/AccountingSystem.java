@@ -3,13 +3,18 @@ package se.kth.iv1350.sem3.integration;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.model.SaleLog;
 
+/**
+ * Represents the external accounting system of the retail store.
+ * Finished sales are sent here for updating of account.
+ * Although this class is responsible for a printout, it is not part of the view, or user interface.
+ */
 public class AccountingSystem {
 
     public AccountingSystem() {
     }
 
     /**
-     * Kommer transformeras till en privat metod i View klassen som gör printout.
+     * Sends the sale info to the external accounting system.
      * @param saleDTO The saleDTO to be sent to the external accounting system.
      */
     public void sendSaleInfo(SaleDTO saleDTO) {

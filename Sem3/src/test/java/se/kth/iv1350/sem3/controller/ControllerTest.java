@@ -157,7 +157,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testScanSizeOfListAfterScanSameItem() throws ItemInvalidException, DatabaseConnetionException {
+    void testScanSizeOfListAfterScanSameItem() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -177,7 +177,7 @@ public class ControllerTest {
 
 
     @Test
-    void testScanItemDifferentLists() throws ItemInvalidException, DatabaseConnetionException {
+    void testScanItemDifferentLists() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -204,7 +204,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testScanItemSameLists() throws ItemInvalidException, DatabaseConnetionException {
+    void testScanItemSameLists() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -228,7 +228,7 @@ public class ControllerTest {
 
 
     @Test
-    void testPayChange() throws ItemInvalidException, DatabaseConnetionException {
+    void testPayChange() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -256,7 +256,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testPayPrice() throws ItemInvalidException, DatabaseConnetionException {
+    void testPayPrice() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -287,7 +287,7 @@ public class ControllerTest {
      * Should in reality throw error, but we are simply testing that it works as intended.
      */
     @Test
-    void testPayPriceNegative() throws ItemInvalidException, DatabaseConnetionException {
+    void testPayPriceNegative() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
@@ -315,7 +315,7 @@ public class ControllerTest {
     }
 
     @Test
-    void testPayPriceZeroVAT() throws ItemInvalidException, DatabaseConnetionException {
+    void testPayPriceZeroVAT() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();

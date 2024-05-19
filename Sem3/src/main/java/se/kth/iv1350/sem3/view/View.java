@@ -1,7 +1,7 @@
 package se.kth.iv1350.sem3.view;
 
 import se.kth.iv1350.sem3.controller.Controller;
-import se.kth.iv1350.sem3.integration.DatabaseConnetionException;
+import se.kth.iv1350.sem3.integration.DatabaseConnectionException;
 import se.kth.iv1350.sem3.integration.ItemInvalidException;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
@@ -50,8 +50,8 @@ public class View {
                     e.printStackTrace();
                     System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item with ID: " + e.getItemID() + ", no such item exists in store. Please try another item..");
-                } catch (DatabaseConnetionException e) {
-                    System.out.println("Caught the DatabaseConnetionException in in View, about to errorMessage it and log");
+                } catch (DatabaseConnectionException e) {
+                    System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -68,10 +68,10 @@ public class View {
             System.out.println("\nCustomer pays: " + amount + " SEK via " + paymentMethod);
             double change = contr.pay(amount, paymentMethod);
             printReturnChangeToCustomer(change);
-        } catch(DatabaseConnetionException e) {
+        } catch(DatabaseConnectionException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card.");
+                errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card. Please try a different payment method.");
         }
     }
 
@@ -92,8 +92,8 @@ public class View {
                     e.printStackTrace();
                     System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item with ID: " + e.getItemID() + ", no such item exists in store. Please try another item..");
-                } catch (DatabaseConnetionException e) {
-                    System.out.println("Caught the DatabaseConnetionException in in View, about to errorMessage it and log");
+                } catch (DatabaseConnectionException e) {
+                    System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -103,15 +103,17 @@ public class View {
         }
         contr.endSale();
         printEndSale();
-        double amount = 57.81;
+        double amount = 57.810199999999995;
         String paymentMethod = "Credit card";
         System.out.println("\n-------------------Begin Payment------------------------" );
         try {
             System.out.println("\nCustomer pays: " + amount + " SEK via " + paymentMethod);
             double change = contr.pay(amount, paymentMethod);
             printReturnChangeToCustomer(change);
-        } catch(DatabaseConnetionException e) {
+        } catch(DatabaseConnectionException e) {
             e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card. Please try a different payment method.");
         }
     }
 

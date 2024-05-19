@@ -56,9 +56,9 @@ public class Controller {
      * @param itemID The ID of the item to be scanned.
      * @return A {@link SaleDTO saleDTO} representing the updated state of the sale after scanning the item.
      * @throws ItemInvalidException If the scanItem operation resulted in a itemID that does not exist in the inventory system.
-     * @throws DatabaseConnetionException If the scanItem operation resulted in that the database could not be reached.
+     * @throws DatabaseConnectionException If the scanItem operation resulted in that the database could not be reached.
      */
-    public SaleDTO scanItem(int itemID) throws ItemInvalidException, DatabaseConnetionException {
+    public SaleDTO scanItem(int itemID) throws ItemInvalidException, DatabaseConnectionException {
         if(sale.findItemInfo(itemID)) {
             SaleDTO saleDTO = sale.increaseQuantity(itemID);
             return saleDTO;
@@ -73,8 +73,8 @@ public class Controller {
                 System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
                 logger.log(e);
                 throw e;
-            } catch(DatabaseConnetionException e) {
-                System.out.println("Caught the DatabaseConnetionException in in ScanItem (Controller) and about to log and throw the exception to View");
+            } catch(DatabaseConnectionException e) {
+                System.out.println("Caught the DatabaseConnectionException in in ScanItem (Controller) and about to log and throw the exception to View");
                 logger.log(e);
                 throw e;
             }
@@ -102,9 +102,9 @@ public class Controller {
      * @param amount The amount given from the customer
      * @param paymentMethod Payment method customer enters, usually cash.
      * @return Change given back to the customer
-     * @throws IllegalArgumentException If the given paymentMethod is invalid.
+     * @throws IllegalArgumentException If the given paymentMethod is unsupported by the retail store.
      */
-    public double pay(double amount, String paymentMethod) throws DatabaseConnetionException, IllegalArgumentException {
+    public double pay(double amount, String paymentMethod) throws DatabaseConnectionException, IllegalArgumentException {
         PaymentMethodFactory paymentMethodFactory = PaymentMethodFactory.getInstance();
         PaymentResult paymentResult = sale.pay(amount, paymentMethodFactory.getDefaultPaymentMethodStrategy(paymentMethod));
         printer.print(paymentResult.getReceipt());
@@ -117,6 +117,11 @@ public class Controller {
         return sale;
     }
 
+    /**
+     * Adds a {@link SaleObserver saleObserver} to the list of {@link List<SaleObserver> saleObservers}.
+     * This list is later given to the newly instantiated {@link Sale sale} object.
+     * @param saleObserver The {@link SaleObserver saleObserver} to be added to the list.
+     */
     public void addSaleObserver(SaleObserver saleObserver) {
         saleObservers.add(saleObserver);
     }
