@@ -70,7 +70,7 @@ public class Controller {
                 logger.log(e);
                 throw e;
             } catch(DatabaseCallException e) {
-                System.out.println("Caught the DatabaseCallException in in ScanItem (Controller) and about to log and throw the exception to View");
+                System.out.println("Caught the DatabaseCallException in ScanItem (Controller) and about to log and throw the exception to View");
                 logger.log(e);
                 throw e;
             }
