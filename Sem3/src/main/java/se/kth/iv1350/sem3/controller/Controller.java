@@ -54,7 +54,7 @@ public class Controller {
      * @param itemID The ID of the item to be scanned.
      * @return A saleDTO representing the updated state of the sale after scanning the item.
      */
-    public SaleDTO scanItem(int itemID) throws ItemInvalidException, DatabaseCallException {
+    public SaleDTO scanItem(int itemID) throws ItemInvalidException, DatabaseConnetionException {
         if(sale.findItemInfo(itemID)) {
             SaleDTO saleDTO = sale.increaseQuantity(itemID);
             return saleDTO;
@@ -69,8 +69,8 @@ public class Controller {
                 System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
                 logger.log(e);
                 throw e;
-            } catch(DatabaseCallException e) {
-                System.out.println("Caught the DatabaseCallException in in ScanItem (Controller) and about to log and throw the exception to View");
+            } catch(DatabaseConnetionException e) {
+                System.out.println("Caught the DatabaseConnetionException in in ScanItem (Controller) and about to log and throw the exception to View");
                 logger.log(e);
                 throw e;
             }
@@ -100,7 +100,7 @@ public class Controller {
      * @param paymentMethod Payment method customer enters, usually cash.
      * @return Change given back to the customer
      */
-    public double pay(double amount, String paymentMethod) throws DatabaseCallException, IllegalArgumentException {
+    public double pay(double amount, String paymentMethod) throws DatabaseConnetionException, IllegalArgumentException {
         PaymentMethodFactory paymentMethodFactory = PaymentMethodFactory.getInstance();
         PaymentResult paymentResult = sale.pay(amount, paymentMethodFactory.getDefaultPaymentMethodStrategy(paymentMethod));
         printer.print(paymentResult.getReceipt());

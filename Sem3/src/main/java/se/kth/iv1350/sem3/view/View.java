@@ -1,7 +1,7 @@
 package se.kth.iv1350.sem3.view;
 
 import se.kth.iv1350.sem3.controller.Controller;
-import se.kth.iv1350.sem3.integration.DatabaseCallException;
+import se.kth.iv1350.sem3.integration.DatabaseConnetionException;
 import se.kth.iv1350.sem3.integration.ItemInvalidException;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
@@ -50,8 +50,8 @@ public class View {
                     e.printStackTrace();
                     System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item, no such item exists in store. Please try another item..");
-                } catch (DatabaseCallException e) {
-                    System.out.println("Caught the DatabaseCallException in in View, about to errorMessage it and log");
+                } catch (DatabaseConnetionException e) {
+                    System.out.println("Caught the DatabaseConnetionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -67,7 +67,7 @@ public class View {
         try {
             double change = contr.pay(amount, paymentMethod);
             printReturnChangeToCustomer(change);
-        } catch(DatabaseCallException e) {
+        } catch(DatabaseConnetionException e) {
             e.printStackTrace();
         }
     }
@@ -89,8 +89,8 @@ public class View {
                     e.printStackTrace();
                     System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item, no such item exists in store. Please try another item..");
-                } catch (DatabaseCallException e) {
-                    System.out.println("Caught the DatabaseCallException in in View, about to errorMessage it and log");
+                } catch (DatabaseConnetionException e) {
+                    System.out.println("Caught the DatabaseConnetionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -106,7 +106,7 @@ public class View {
         try {
             double change = contr.pay(amount, paymentMethod);
             printReturnChangeToCustomer(change);
-        } catch(DatabaseCallException e) {
+        } catch(DatabaseConnetionException e) {
             e.printStackTrace();
         }
     }

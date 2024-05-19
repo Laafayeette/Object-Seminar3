@@ -10,9 +10,8 @@ public class AccountingSystem {
 
     /**
      * Kommer transformeras till en privat metod i View klassen som gör printout.
-     * @param saleDTO
+     * @param saleDTO The saleDTO to be sent to the external accounting system.
      */
-    //Testa system.out. STRINGS!!!!!!
     public void sendSaleInfo(SaleDTO saleDTO) {
         System.out.println("\n-------------------Updating Accounting System------------------------");
         System.out.println("Sent sale information to Accounting System for accounting");
