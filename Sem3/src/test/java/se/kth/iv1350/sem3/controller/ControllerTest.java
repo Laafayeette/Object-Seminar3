@@ -1,6 +1,7 @@
 package se.kth.iv1350.sem3.controller;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,7 @@ public class ControllerTest {
         invSys1 = new InventorySystem();
         printer = new Printer();
         saleLog = new SaleLog();
+        contr = new Controller();
     }
 
     @AfterEach
@@ -48,7 +50,59 @@ public class ControllerTest {
         invSys1 = null;
         printer = null;
         saleLog = null;
+        contr = null;
 
+    }
+
+    @Test
+    public void testScanItemInvalidException() {
+        contr = new Controller();
+        sale = new Sale();
+        contr.startSale();
+
+        int invalidItemID = 8;
+
+        ItemInvalidException exception = assertThrows(ItemInvalidException.class, () -> contr.scanItem(invalidItemID));
+
+        String expectedMessage = "The item with ID " + invalidItemID + " is not valid, as it does not exist in the inventory system.";
+        String actualMessage = exception.getMessage();
+        Assertions.assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    public void testScanItemValidException() {
+        contr = new Controller();
+        sale = new Sale();
+        contr.startSale();
+        int validItemID = 4;
+
+        assertDoesNotThrow(() -> contr.scanItem(validItemID));
+    }
+
+    @Test
+    public void testDatabaseConnectionException() {
+        contr = new Controller();
+        sale = new Sale();
+        contr.startSale();
+
+        int databaseConnectionExceptionItemID = 7;
+
+        DatabaseConnectionException exception = assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
+
+        String expectedMessage = "Database call failed, please try again or check your connection.";
+        String actualMessage = exception.getMessage();
+        Assertions.assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    public void testDatabaseNoException() {
+        contr = new Controller();
+        sale = new Sale();
+        contr.startSale();
+
+        int anItemIDThatShouldNotGiveDatabaseException = 4;
+
+        assertDoesNotThrow(() -> contr.scanItem(anItemIDThatShouldNotGiveDatabaseException));
     }
 
     @Test
