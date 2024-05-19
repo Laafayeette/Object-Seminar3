@@ -1,8 +1,6 @@
 package se.kth.iv1350.sem3.model;
 
-class CashPaymentMethod implements PaymentMethodStrategy {
-    CashPaymentMethod() {}
-
+public class CashPaymentMethod implements PaymentMethodStrategy {
     @Override
     public double calculateCustomerchange(double amount, double currentTotalPrice) {
         return amount - currentTotalPrice;
