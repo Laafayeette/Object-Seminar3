@@ -62,6 +62,18 @@ public class ControllerTest {
 
         int invalidItemID = 8;
 
+        assertThrows(ItemInvalidException.class, () -> contr.scanItem(invalidItemID));
+
+    }
+
+    @Test
+    public void testScanItemInvalidExceptionMessage() {
+        contr = new Controller();
+        sale = new Sale();
+        contr.startSale();
+
+        int invalidItemID = 8;
+
         ItemInvalidException exception = assertThrows(ItemInvalidException.class, () -> contr.scanItem(invalidItemID));
 
         String expectedMessage = "The item with ID " + invalidItemID + " is not valid, as it does not exist in the inventory system.";
@@ -81,6 +93,18 @@ public class ControllerTest {
 
     @Test
     public void testDatabaseConnectionException() {
+        contr = new Controller();
+        sale = new Sale();
+        contr.startSale();
+
+        int databaseConnectionExceptionItemID = 7;
+
+        DatabaseConnectionException exception = assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
+
+    }
+
+    @Test
+    public void testDatabaseConnectionExceptionMessage() {
         contr = new Controller();
         sale = new Sale();
         contr.startSale();
