@@ -69,7 +69,7 @@ public class PrinterTest {
 
 
         SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
-        Payment payment = new Payment(150, currentTotalPrice, new CashPayment());
+        Payment payment = new Payment(150, currentTotalPrice, new CashPaymentMethod());
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);
@@ -84,7 +84,7 @@ public class PrinterTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        PaymentStrategy paymentStrategy = new CashPayment();
+        PaymentMethodStrategy paymentMethodStrategy = new CashPaymentMethod();
 
         ItemDTO item1 = new ItemDTO("Gurka", 2, 5.0, 0.25, 1);
         purchasedItems.add(item1);
@@ -95,7 +95,7 @@ public class PrinterTest {
         double currentTotalPrice = item1Price;  //5 kr
 
         SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
-        Payment payment = new Payment(150, currentTotalPrice, paymentStrategy);
+        Payment payment = new Payment(150, currentTotalPrice, paymentMethodStrategy);
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);

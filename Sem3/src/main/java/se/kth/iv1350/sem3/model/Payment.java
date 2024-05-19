@@ -5,7 +5,7 @@ public class Payment {
     private final double amount;
     //private final String paymentMethod;
     private final double currentTotalPrice;
-    private final PaymentStrategy paymentStrategy;
+    private final PaymentMethodStrategy paymentMethodStrategy;
 
     /**
      * Constructor for the @Link(Payment) class.
@@ -14,12 +14,12 @@ public class Payment {
      * //@param paymentMethod The given payment method by which payment should take place.
      * @param currentTotalPrice The total price to be paid for the whole sale.
      */
-    public Payment(double amount, double currentTotalPrice, PaymentStrategy paymentStrategy) {
+    public Payment(double amount, double currentTotalPrice, PaymentMethodStrategy paymentMethodStrategy) {
         this.amount = amount;
         //this.paymentMethod = paymentMethod;
         this.currentTotalPrice = currentTotalPrice;
         //getCustomerChange();
-        this.paymentStrategy = paymentStrategy;
+        this.paymentMethodStrategy = paymentMethodStrategy;
     }
 
 //    private double calculateCustomerChange(double amount, double currentTotalPrice) {
@@ -28,28 +28,27 @@ public class Payment {
 //    }
 
 
-    public PaymentStrategy getPaymentStrategy() {
-        return paymentStrategy;
+    public PaymentMethodStrategy getPaymentStrategy() {
+        return paymentMethodStrategy;
     }
 
     /**
-     * A getter for the Payment method specified by the {@link PaymentStrategy}.
+     * A getter for the Payment method specified by the {@link PaymentMethodStrategy}.
      * This method is used by {@link Receipt} class to enable dynamic printout.
-     * The method takes the class name from the class implementing the {@link PaymentStrategy} interface,
+     * The method takes the class name from the class implementing the {@link PaymentMethodStrategy} interface,
      * and trims the "Payment" section of the string.
      * @return The trimmed version of the classname, representing the payment method as a String.
      */
     public String getPaymentMethod() {
-        if (paymentStrategy == null) {
+        if (paymentMethodStrategy == null) {
             return null;
         }
-        String paymentMethodString =  paymentStrategy.getClass().getSimpleName();
-        String trim = "Payment";
-        return paymentMethodString.replace("Payment", "");
+        String paymentMethodString =  paymentMethodStrategy.getClass().getSimpleName();
+        return paymentMethodString.replace("PaymentMethod", "");
     }
 
     public double getCustomerChange() {
-        return paymentStrategy.calculateCustomerchange(amount, currentTotalPrice);
+        return paymentMethodStrategy.calculateCustomerchange(amount, currentTotalPrice);
     }
 
     public double getAmount() {

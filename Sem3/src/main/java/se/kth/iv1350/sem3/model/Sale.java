@@ -1,6 +1,5 @@
 package se.kth.iv1350.sem3.model;
 
-import se.kth.iv1350.sem3.integration.DatabaseCallException;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 
@@ -22,7 +21,7 @@ public class Sale {
     //En lista av observers
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
-    private PaymentStrategy paymentStrategy;
+    private PaymentMethodStrategy paymentMethodStrategy;
 
 
     /**
@@ -139,11 +138,11 @@ public class Sale {
      * After the payment has been finalized, the method notifies the observers about the updated state.
      * Subsequently, it returns an instance of {@link PaymentResult} back to the caller.
      * @param amount The amount to be paid.
-     * @param paymentStrategy The implementation of the payment method.
+     * @param paymentMethodStrategy The implementation of the payment method.
      * @return An instance of {@link PaymentResult}.
      */
-    public PaymentResult pay(double amount, PaymentStrategy paymentStrategy) {
-        Payment payment = new Payment(amount, getCurrentTotalPrice(), paymentStrategy);
+    public PaymentResult pay(double amount, PaymentMethodStrategy paymentMethodStrategy) {
+        Payment payment = new Payment(amount, getCurrentTotalPrice(), paymentMethodStrategy);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
         notifyObservers();
         return new PaymentResult(receipt, payment.getCustomerChange());

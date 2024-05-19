@@ -1,6 +1,6 @@
 package se.kth.iv1350.sem3.model;
 
-public interface PaymentStrategy {
+public interface PaymentMethodStrategy {
 
     double calculateCustomerchange(double amount, double currentTotalPrice);
 }

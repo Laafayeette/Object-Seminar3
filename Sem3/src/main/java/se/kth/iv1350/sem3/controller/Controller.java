@@ -101,17 +101,8 @@ public class Controller {
      * @return Change given back to the customer
      */
     public double pay(double amount, String paymentMethod) throws DatabaseCallException, IllegalArgumentException {
-        PaymentStrategy paymentStrategy;
-        if(paymentMethod.equalsIgnoreCase("CreditCard")) {
-             paymentStrategy = new CreditCardPayment();
-        }
-        else if(paymentMethod.equalsIgnoreCase("Cash")) {
-             paymentStrategy = new CashPayment();
-        }
-        else {
-            throw new IllegalArgumentException("Invalid payment method: " + paymentMethod);
-        }
-        PaymentResult paymentResult = sale.pay(amount, paymentStrategy);
+        PaymentMethodFactory paymentMethodFactory = new PaymentMethodFactory();
+        PaymentResult paymentResult = sale.pay(amount, paymentMethodFactory.getDefaultPaymentMethodStrategy(paymentMethod));
         printer.print(paymentResult.getReceipt());
         saleLog.registerSaleLog(sale.getSaleDTO());
         updateExternalSystems();
