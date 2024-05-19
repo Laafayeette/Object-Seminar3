@@ -40,10 +40,13 @@ public class Payment {
      * @return The trimmed version of the classname, representing the payment method as a String.
      */
     public String getPaymentMethod() {
+        if (paymentStrategy == null) {
+            return null;
+        }
         String paymentMethodString =  paymentStrategy.getClass().getSimpleName();
         String trim = "Payment";
-        String trimmedStr = removeSuffix(paymentMethodString, trim);
-        return trimmedStr;
+        return paymentMethodString.replace("Payment", "");
+
     }
 
     private String removeSuffix(String str, String trim) {
