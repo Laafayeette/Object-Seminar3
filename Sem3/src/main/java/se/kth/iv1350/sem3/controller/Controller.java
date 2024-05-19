@@ -70,11 +70,11 @@ public class Controller {
                 return saleDTO;
             } catch (ItemInvalidException e) {
                 //log this in the view.
-                //System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
+                System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
                 logger.log(e);
                 throw e;
             } catch(DatabaseConnectionException e) {
-                //System.out.println("Caught the DatabaseConnectionException in in ScanItem (Controller) and about to log and throw the exception to View");
+                System.out.println("Caught the DatabaseConnectionException in in ScanItem (Controller) and about to log and throw the exception to View");
                 logger.log(e);
                 throw e;
             }

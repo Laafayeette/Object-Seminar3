@@ -12,7 +12,7 @@ public class DatabaseConnectionException extends Exception{
      */
     public DatabaseConnectionException(String message) {
         super(message);
-        //System.out.println("This is the e.getMessage() for DatabaseCalleException: " + message);
-        //System.out.println("You have reached the DataBaseCallException constructor");
+        System.out.println("This is the e.getMessage() for DatabaseCalleException: " + message);
+        System.out.println("You have reached the DataBaseCallException constructor");
     }
 }

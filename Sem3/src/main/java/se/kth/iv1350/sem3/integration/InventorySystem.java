@@ -52,7 +52,7 @@ public class InventorySystem {
             }
         }
         //If we cant find with the item then we throw the exception..!!!!
-        //System.out.println("About to throw an ItemInvalidException in fetchItemInfo to Controller (InventorySystem)");
+        System.out.println("About to throw an ItemInvalidException in fetchItemInfo to Controller (InventorySystem)");
         throw new ItemInvalidException(itemID);
     }
 

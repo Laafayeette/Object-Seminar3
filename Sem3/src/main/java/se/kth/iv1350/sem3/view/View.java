@@ -52,10 +52,10 @@ public class View {
                     printSaleDTO(saleDTO);
                 } catch (ItemInvalidException e) {
                     e.printStackTrace();
-                    //System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
+                    System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item with ID: " + e.getItemID() + ", no such item exists in store. Please try another item..");
                 } catch (DatabaseConnectionException e) {
-                    //System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
+                    System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -97,10 +97,10 @@ public class View {
                     printSaleDTO(saleDTO);
                 } catch (ItemInvalidException e) {
                     e.printStackTrace();
-                    //System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
+                    System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item with ID: " + e.getItemID() + ", no such item exists in store. Please try another item..");
                 } catch (DatabaseConnectionException e) {
-                    //System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
+                    System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();
