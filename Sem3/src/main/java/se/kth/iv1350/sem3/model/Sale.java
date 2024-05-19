@@ -40,7 +40,7 @@ public class Sale {
 
 
     /**
-     * Checks a given item of the type @Link(ItemDTO) exists in the current sale, or purchased items list.
+     * Checks a given item of the type {@link ItemDTO} exists in the current sale, or purchased items list.
      *
      * @param itemID The ID of the item to be found.
      * @return <code>true</code>> if item is found, <code>false</code> if not found.
@@ -64,7 +64,7 @@ public class Sale {
      * Updates the current sale with new information from the recently scanned item.
      * Calculates the new total price and total VAT with the added item to the sale.
      * @param itemDTO The itemDTO with information about the new item in the sale.
-     * @return The updated saleDTO after scanning the new item.
+     * @return The updated {@link SaleDTO saleDTO} after scanning the new item.
      */
     public SaleDTO updateSale(ItemDTO itemDTO) {
         double itemPrice = itemDTO.getItemPrice();
@@ -79,9 +79,9 @@ public class Sale {
     }
 
     /**
-     * Increases the quantity of an item in the sale by scanning and adding it to the sale.
+     * Increases the quantity of an item in the sale by scanning and adding it to the {@link Sale} instance.
      * @param itemID The ID of the item to be scanned again.
-     * @return A new saleDTO after increasing the quantity of the item.
+     * @return A new {@link SaleDTO saleDTO} after increasing the quantity of the item.
      */
     public SaleDTO increaseQuantity(int itemID) {
             for (ItemDTO item : purchasedItems) {
@@ -159,7 +159,7 @@ public class Sale {
     }
 
     /**
-     * Adds a given sale observer into the list of sale observers.
+     * Adds a given sale observer into the list of {@link List<SaleObserver> saleObservers}.
      * @param saleObserver The given sale observer to be added to list.
      */
     public void addSaleObserver(SaleObserver saleObserver) {
@@ -175,8 +175,8 @@ public class Sale {
     }
 
     /**
-     * The list of sale observers to be added to the current sale object.
-     * This list is provided from the Controller class because the Controller permeates all instances of sales in the program,
+     * The list of sale observers to be added to the current sale object during instantiation of the sale.
+     * This list is provided from the {@link se.kth.iv1350.sem3.controller.Controller} class because the Controller permeates all instances of sales in the program,
      * and therefore when the sale is started, the current sale object is simply provided with the list of observers it needs.
      * It does not itself perform any logic to fetch any observers, that is the Controller's job.
      * @param saleObservers The list of observers provided from Controller.

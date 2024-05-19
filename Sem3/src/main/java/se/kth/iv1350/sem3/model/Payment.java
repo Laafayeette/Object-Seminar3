@@ -56,10 +56,6 @@ public class Payment {
         return amount;
     }
 
-//    public String getPaymentMethod() {
-//        return paymentMethod;
-//    }
-
     public double getCurrentTotalPrice() {
         return currentTotalPrice;
     }
