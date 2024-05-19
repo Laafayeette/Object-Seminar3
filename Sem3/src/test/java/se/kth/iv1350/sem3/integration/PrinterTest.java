@@ -69,7 +69,7 @@ public class PrinterTest {
 
 
         SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
-        Payment payment = new Payment(150, "Cash", currentTotalPrice, new CashPayment());
+        Payment payment = new Payment(150, currentTotalPrice, new CashPayment());
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);
@@ -95,7 +95,7 @@ public class PrinterTest {
         double currentTotalPrice = item1Price;  //5 kr
 
         SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
-        Payment payment = new Payment(150, "Cash", currentTotalPrice, paymentStrategy);
+        Payment payment = new Payment(150, currentTotalPrice, paymentStrategy);
         Receipt receipt = new Receipt(saleDTO, payment);
 
         printer.print(receipt);

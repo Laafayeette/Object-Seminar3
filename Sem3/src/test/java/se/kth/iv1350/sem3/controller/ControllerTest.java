@@ -245,7 +245,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 50.
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
+        Payment payment = new Payment(amount, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         payment.getCustomerChange();
 
@@ -273,7 +273,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 50.
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
+        Payment payment = new Payment(amount, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         payment.getCustomerChange();
 
@@ -304,7 +304,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 50.
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
+        Payment payment = new Payment(amount, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         payment.getCustomerChange();
 
@@ -332,7 +332,7 @@ public class ControllerTest {
         double expectedCurrentTotalPrice = 12.5; //Change should be 0
         double expectedChange = amount - expectedCurrentTotalPrice;
 
-        Payment payment = new Payment(amount, paymentMethod, expectedCurrentTotalPrice, new CashPayment());
+        Payment payment = new Payment(amount, expectedCurrentTotalPrice, new CashPayment());
         double expectedCustomerChange = payment.getCustomerChange();
         double changeFromPay = payment.getCustomerChange();
 
