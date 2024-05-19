@@ -1,6 +1,7 @@
 package se.kth.iv1350.sem3.model;
 
-public class CreditCardPaymentMethod implements PaymentMethodStrategy {
+class CreditCardPaymentMethod implements PaymentMethodStrategy {
+    CreditCardPaymentMethod() {}
 
     @Override
     public double calculateCustomerchange(double amount, double currentTotalPrice) {
