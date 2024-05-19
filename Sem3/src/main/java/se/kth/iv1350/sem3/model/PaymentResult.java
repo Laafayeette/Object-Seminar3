@@ -1,20 +1,8 @@
 package se.kth.iv1350.sem3.model;
 
-public class PaymentResult {
+/**
+ * A read-only Record class to be used for sending information related to the Payment to other implementations in need of it.
+ */
+public record PaymentResult(Receipt receipt, double customerChange) {
 
-    private final Receipt receipt;
-    private final double customerChange;
-
-    public PaymentResult(Receipt receipt, double customerChange) {
-        this.receipt = receipt;
-        this.customerChange = customerChange;
-    }
-
-    public Receipt getReceipt() {
-        return receipt;
-    }
-
-    public double getCustomerChange() {
-        return customerChange;
-    }
 }
