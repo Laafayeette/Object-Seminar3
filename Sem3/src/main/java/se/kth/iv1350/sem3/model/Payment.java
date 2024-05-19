@@ -46,14 +46,6 @@ public class Payment {
         String paymentMethodString =  paymentStrategy.getClass().getSimpleName();
         String trim = "Payment";
         return paymentMethodString.replace("Payment", "");
-
-    }
-
-    private String removeSuffix(String str, String trim) {
-        if (str != null && trim != null && str.endsWith(trim)) {
-            return str.substring(0, str.length() - trim.length());
-        }
-        return str;
     }
 
     public double getCustomerChange() {
