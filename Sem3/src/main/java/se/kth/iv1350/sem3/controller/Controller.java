@@ -101,7 +101,7 @@ public class Controller {
      * @return Change given back to the customer
      */
     public double pay(double amount, String paymentMethod) throws DatabaseCallException, IllegalArgumentException {
-        PaymentMethodFactory paymentMethodFactory = new PaymentMethodFactory();
+        PaymentMethodFactory paymentMethodFactory = PaymentMethodFactory.getInstance();
         PaymentResult paymentResult = sale.pay(amount, paymentMethodFactory.getDefaultPaymentMethodStrategy(paymentMethod));
         printer.print(paymentResult.getReceipt());
         saleLog.registerSaleLog(sale.getSaleDTO());
