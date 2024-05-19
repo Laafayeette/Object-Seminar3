@@ -68,13 +68,7 @@ public class Controller {
                 ItemDTO itemDTO = invSys.fetchItemInfo(itemID);
                 SaleDTO saleDTO = sale.updateSale(itemDTO);
                 return saleDTO;
-            } catch (ItemInvalidException e) {
-                //log this in the view.
-                //System.out.println("Caught the ItemInvalidException in scanItem (Controller), about to log and throw the exception to View");
-                logger.log(e);
-                throw e;
-            } catch(DatabaseConnectionException e) {
-                //System.out.println("Caught the DatabaseConnectionException in in ScanItem (Controller) and about to log and throw the exception to View");
+            } catch (ItemInvalidException | DatabaseConnectionException e) {
                 logger.log(e);
                 throw e;
             }

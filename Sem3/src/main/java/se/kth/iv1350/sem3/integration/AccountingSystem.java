@@ -1,7 +1,6 @@
 package se.kth.iv1350.sem3.integration;
 
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
-import se.kth.iv1350.sem3.model.SaleLog;
 
 /**
  * Represents the external accounting system of the retail store.

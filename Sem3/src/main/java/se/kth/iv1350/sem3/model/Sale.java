@@ -20,9 +20,6 @@ public class Sale {
 
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
-    private PaymentMethodStrategy paymentMethodStrategy;
-
-
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
      */
@@ -130,22 +127,6 @@ public class Sale {
     }
 
     /**
-     * Adds a given sale observer into the list of {@link List<SaleObserver> saleObservers}.
-     * @param saleObserver The given sale observer to be added to list.
-     */
-    public void addSaleObserver(SaleObserver saleObserver) {
-        this.saleObservers.add(saleObserver);
-    }
-
-    /**
-     * Adds a list of sale observers into the list of sale observers. Rarely used.
-     * @param observers The given list of sale observers to be added to list.
-     */
-    public void addObservers(List<SaleObserver> observers) {
-        this.saleObservers.addAll(observers);
-    }
-
-    /**
      * The list of sale observers to be added to the current sale object during instantiation of the sale.
      * This list is provided from the {@link se.kth.iv1350.sem3.controller.Controller} class because the Controller permeates all instances of sales in the program,
      * and therefore when the sale is started, the current sale object is simply provided with the list of observers it needs.
@@ -164,20 +145,7 @@ public class Sale {
         return purchasedItems;
     }
 
-    public void setCurrentTotalPrice(double currentTotalPrice) {
-        this.currentTotalPrice = currentTotalPrice;
-    }
-
-    public void setPurchasedItems(List<ItemDTO> purchasedItems) {
-        this.purchasedItems = purchasedItems;
-    }
-
-    public void setSaleDTO(SaleDTO saleDTO) {
-        this.saleDTO = saleDTO;
-    }
-
     public SaleDTO getSaleDTO() {
         return saleDTO;
     }
-
 }

@@ -6,7 +6,6 @@ import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
 
 /**
  * This class represents the Receipt to be printed at the end of the sale.

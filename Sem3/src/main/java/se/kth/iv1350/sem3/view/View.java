@@ -5,7 +5,6 @@ import se.kth.iv1350.sem3.integration.DatabaseConnectionException;
 import se.kth.iv1350.sem3.integration.ItemInvalidException;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
-import se.kth.iv1350.sem3.util.LogHandler;
 
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -18,13 +17,11 @@ import java.util.Random;
 public class View {
 
     private final Controller contr;
-    private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
-    private LogHandler logHandler = new LogHandler();
-
+    private final ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
 
     /**
      * Constructor for the view class.
-     * Calls upon @Link(someMethodInView) to instantiate a new sale in the store.
+     * Instantiates observer objects and sends them to the controller.
      * @param contr The Controller object.
      */
     public View(Controller contr) {
@@ -35,7 +32,8 @@ public class View {
 
     /**
      * A sample execution of a sale.
-     * This version stimulates a faulty payment method.
+     * To test DatabaseConnectionException, set i = 7, quantity = 1; i<8
+     * To test ItemInvalidException, you can try i = 8, quantity = 1; i <9.
      */
     public void sampleExecution() {
         contr.startSale();
@@ -52,10 +50,8 @@ public class View {
                     printSaleDTO(saleDTO);
                 } catch (ItemInvalidException e) {
                     e.printStackTrace();
-                    //System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item with ID: " + e.getItemID() + ", no such item exists in store. Please try another item..");
                 } catch (DatabaseConnectionException e) {
-                    //System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -75,12 +71,13 @@ public class View {
         } catch(DatabaseConnectionException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-                errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card. Please try a different payment method.");
+            errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card. Please try a different payment method.");
         }
     }
 
     /**
-     * A sample execution that handles a correctly handled sale.
+     * Another sample execution.
+     * These are subject to change.
      */
     public void sampleExecution1() {
         contr.startSale();
@@ -97,10 +94,8 @@ public class View {
                     printSaleDTO(saleDTO);
                 } catch (ItemInvalidException e) {
                     e.printStackTrace();
-                    //System.out.println("Caught the ItemInvalidException in View, about to errorMessage it");
                     errorMsgHandler.showMessage("Could not scan item with ID: " + e.getItemID() + ", no such item exists in store. Please try another item..");
                 } catch (DatabaseConnectionException e) {
-                    //System.out.println("Caught the DatabaseConnectionException in in View, about to errorMessage it and log");
                     errorMsgHandler.showMessage("Failed to scan item, there might be an error in the system. Please try again or get supervisor");
                 } catch (Exception e) {
                     e.printStackTrace();

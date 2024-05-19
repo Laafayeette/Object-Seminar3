@@ -4,9 +4,6 @@ import se.kth.iv1350.sem3.controller.Controller;
 import se.kth.iv1350.sem3.view.ErrorMessageHandler;
 import se.kth.iv1350.sem3.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Represents the class in which the main method is run.
  */

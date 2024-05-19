@@ -8,7 +8,7 @@ import se.kth.iv1350.sem3.view.View;
  */
 public class PaymentMethodFactory {
 
-    private static final PaymentMethodFactory INSTANCE = new PaymentMethodFactory();
+    private static final PaymentMethodFactory globalInstance = new PaymentMethodFactory();
     private final PaymentMethodStrategy creditCardPaymentMethod = new CreditCardPaymentMethod();
     private final PaymentMethodStrategy cashPaymentMethod = new CashPaymentMethod();
 
@@ -16,12 +16,12 @@ public class PaymentMethodFactory {
     }
 
     /**
-     * A getter for the {@link PaymentMethodFactory INSTANCE}.
+     * A getter for the {@link PaymentMethodFactory instance}.
      * Allows other classes using it to not initiate it when needing it.
      * @return The <code>PaymentMethodFactory</code> {@link PaymentMethodFactory object}
      */
     public static PaymentMethodFactory getInstance() {
-        return INSTANCE;
+        return globalInstance;
     }
 
     /**

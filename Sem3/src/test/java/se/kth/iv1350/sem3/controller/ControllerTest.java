@@ -74,10 +74,10 @@ public class ControllerTest {
 
         int invalidItemID = 8;
 
-        ItemInvalidException exception = assertThrows(ItemInvalidException.class, () -> contr.scanItem(invalidItemID));
+        ItemInvalidException thrownException = assertThrows(ItemInvalidException.class, () -> contr.scanItem(invalidItemID));
 
         String expectedMessage = "The item with ID " + invalidItemID + " is not valid, as it does not exist in the inventory system.";
-        String actualMessage = exception.getMessage();
+        String actualMessage = thrownException.getMessage();
         Assertions.assertEquals(expectedMessage, actualMessage);
     }
 
@@ -99,7 +99,7 @@ public class ControllerTest {
 
         int databaseConnectionExceptionItemID = 7;
 
-        DatabaseConnectionException exception = assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
+       assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
 
     }
 
@@ -111,10 +111,10 @@ public class ControllerTest {
 
         int databaseConnectionExceptionItemID = 7;
 
-        DatabaseConnectionException exception = assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
+        DatabaseConnectionException thrownException = assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
 
         String expectedMessage = "Database call failed, please try again or check your connection.";
-        String actualMessage = exception.getMessage();
+        String actualMessage = thrownException.getMessage();
         Assertions.assertEquals(expectedMessage, actualMessage);
     }
 
