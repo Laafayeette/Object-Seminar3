@@ -9,4 +9,8 @@ public class ItemInvalidException extends Exception{
         this.itemID = itemID;
     }
 
+    public int getItemID(){
+        return itemID;
+    }
+
 }

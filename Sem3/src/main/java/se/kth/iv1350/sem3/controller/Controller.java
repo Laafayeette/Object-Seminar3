@@ -40,6 +40,8 @@ public class Controller {
 
     /**
      * Method that calls on the constructor in Sale to start a sale operation in the store.
+     * Takes the list of {@link List<SaleObserver> saleObservers} that was given from the view,
+     * and gives it to the newly instantiated {@link Sale sale} object.
      */
     public void startSale() {
         sale = new Sale();
@@ -52,7 +54,9 @@ public class Controller {
      *  If the item has previously been scanned in the sale, it fetches the item information from the current sale and returns an update saleDTO.
      *  Otherwise, it fetches the item information from the inventory system and returns an updated saleDTO with the scanned item.
      * @param itemID The ID of the item to be scanned.
-     * @return A saleDTO representing the updated state of the sale after scanning the item.
+     * @return A {@link SaleDTO saleDTO} representing the updated state of the sale after scanning the item.
+     * @throws ItemInvalidException If the scanItem operation resulted in a itemID that does not exist in the inventory system.
+     * @throws DatabaseConnetionException If the scanItem operation resulted in that the database could not be reached.
      */
     public SaleDTO scanItem(int itemID) throws ItemInvalidException, DatabaseConnetionException {
         if(sale.findItemInfo(itemID)) {
@@ -75,7 +79,6 @@ public class Controller {
                 throw e;
             }
         }
-        //return null;
     }
 
     /**
@@ -99,6 +102,7 @@ public class Controller {
      * @param amount The amount given from the customer
      * @param paymentMethod Payment method customer enters, usually cash.
      * @return Change given back to the customer
+     * @throws IllegalArgumentException If the given paymentMethod is invalid.
      */
     public double pay(double amount, String paymentMethod) throws DatabaseConnetionException, IllegalArgumentException {
         PaymentMethodFactory paymentMethodFactory = PaymentMethodFactory.getInstance();

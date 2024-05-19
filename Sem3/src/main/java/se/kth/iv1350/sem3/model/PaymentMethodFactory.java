@@ -14,14 +14,12 @@ public class PaymentMethodFactory {
     }
 
     public PaymentMethodStrategy getDefaultPaymentMethodStrategy(String paymentMethod) throws IllegalArgumentException {
-        if(paymentMethod.equalsIgnoreCase("CreditCard")) {
+        if(!paymentMethod.equalsIgnoreCase("Credit Card") && !paymentMethod.equalsIgnoreCase("Cash")) {
+            throw new IllegalArgumentException("Unsupported payment method: " + paymentMethod);
+        }
+        else if (paymentMethod.equalsIgnoreCase("Credit Card")) {
              return creditCardPaymentMethod;
         }
-        else if(paymentMethod.equalsIgnoreCase("Cash")) {
-            return cashPaymentMethod;
-        }
-        else {
-            throw new IllegalArgumentException("Invalid payment method: " + paymentMethod);
-        }
+        return cashPaymentMethod;
     }
 }
