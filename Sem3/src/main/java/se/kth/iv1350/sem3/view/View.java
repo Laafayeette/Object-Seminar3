@@ -123,16 +123,7 @@ public class View {
             errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card. Please try a different payment method.");
         }
     }
-
-
-    /**
-     * Up for DELETION
-     */
-    private void printToLogAndView(String errorMsg, Exception e) {
-        errorMsgHandler.showMessage(errorMsg);
-        logHandler.log(e);
-    }
-
+    
     private void printReturnChangeToCustomer(double change) {
         DecimalFormat df = new DecimalFormat("#.##");
         System.out.println("\nChange to give back to Customer: " + df.format(change));
