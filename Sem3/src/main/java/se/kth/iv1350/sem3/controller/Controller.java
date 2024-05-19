@@ -5,7 +5,6 @@ import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.model.*;
 import se.kth.iv1350.sem3.util.LogHandler;
-import se.kth.iv1350.sem3.view.TotalRevenueView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,10 +102,10 @@ public class Controller {
      */
     public double pay(double amount, String paymentMethod) {
         PaymentResult paymentResult = sale.pay(amount, paymentMethod);
-        printer.print(paymentResult.getReceipt());
+        printer.print(paymentResult.receipt());
         saleLog.registerSaleLog(sale.getSaleDTO());
         updateExternalSystems();
-        return paymentResult.getCustomerChange();
+        return paymentResult.customerChange();
     }
 
     public Sale getSale() {
