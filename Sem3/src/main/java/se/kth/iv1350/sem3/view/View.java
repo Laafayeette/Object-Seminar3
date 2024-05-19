@@ -33,6 +33,10 @@ public class View {
         contr.addSaleObserver(new TotalRevenueFileOutput());
     }
 
+    /**
+     * A sample execution of a sale.
+     * This version stimulates a faulty payment method.
+     */
     public void sampleExecution() {
         contr.startSale();
         int minQuantity = 1;
@@ -75,6 +79,9 @@ public class View {
         }
     }
 
+    /**
+     * A sample execution that handles a correctly handled sale.
+     */
     public void sampleExecution1() {
         contr.startSale();
         int minQuantity = 1;
@@ -103,7 +110,7 @@ public class View {
         }
         contr.endSale();
         printEndSale();
-        double amount = 57.810199999999995;
+        double amount = 57.81;
         String paymentMethod = "Credit card";
         System.out.println("\n-------------------Begin Payment------------------------" );
         try {
