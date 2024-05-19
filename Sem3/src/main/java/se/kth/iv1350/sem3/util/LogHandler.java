@@ -17,9 +17,7 @@ public class LogHandler {
     }
 
     public void log(Exception e) {
-        StringBuilder str = new StringBuilder();
-        str.append("An exception was thrown at: " + localDateTime + " with the following message: \n" + e.getMessage());
-        logStream.println(str);
+        logStream.println("An exception was thrown at: " + localDateTime + " with the following message: \n" + e.getMessage());
         System.out.println("\n\n");
         e.printStackTrace(logStream);
     }

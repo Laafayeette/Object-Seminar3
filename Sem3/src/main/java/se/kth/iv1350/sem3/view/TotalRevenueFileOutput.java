@@ -42,9 +42,6 @@ public class TotalRevenueFileOutput implements SaleObserver {
     }
 
     private void log(double totalRevenue) {
-        logStream.println(String.format("%.2f", totalRevenue));
-        StringBuilder str = new StringBuilder();
-        str.append("The total revenue is: ").append(totalRevenue).append(" SEK").append(" calculated at: ").append(localDateTime).append("\n");
-        logStream.println(str);
+        logStream.println("The total revenue is: " + String.format("%.2f",totalRevenue) + " SEK" + " calculated at: " + localDateTime + "\n");
     }
 }

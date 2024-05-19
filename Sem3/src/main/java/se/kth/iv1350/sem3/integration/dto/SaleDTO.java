@@ -1,8 +1,6 @@
 package se.kth.iv1350.sem3.integration.dto;
 
 import java.util.List;
-import java.text.DecimalFormat;
-import java.util.Objects;
 
 public class SaleDTO {
 

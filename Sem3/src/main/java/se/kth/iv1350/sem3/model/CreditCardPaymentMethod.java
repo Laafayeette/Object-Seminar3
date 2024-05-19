@@ -2,7 +2,6 @@ package se.kth.iv1350.sem3.model;
 
 /**
  * An implementation of the {@link PaymentMethodStrategy} interface.
- *
  */
 public class CreditCardPaymentMethod implements PaymentMethodStrategy {
 
@@ -11,7 +10,7 @@ public class CreditCardPaymentMethod implements PaymentMethodStrategy {
      * Implements the <code>calculateCustomerChange</code> method.
      * The credit card payment calculates the change to give back to the customer.
      * It is a logically an unsound operation to calculate a change total in the case of credit cards.
-     * However this implementation is meant to illustrate that when a customer pays via card,
+     * However, this implementation is meant to illustrate that when a customer pays via card,
      * then there is nothing to be returned back to the customer.
      * And the <code>amount</code> that is given equals the <code>currentTotalPrice</code>, as in the case of card payments.
      * No error is thrown if the <code>amount</code>> in the credit card does not equal the <code>currentTotalPrice</code>
