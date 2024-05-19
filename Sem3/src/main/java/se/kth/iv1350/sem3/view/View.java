@@ -62,7 +62,7 @@ public class View {
         contr.endSale();
         printEndSale();
         double amount = 200;
-        String paymentMethod = "Caswqe";
+        String paymentMethod = "Cas123";
         System.out.println("\n-------------------Begin Payment------------------------");
         try {
             System.out.println("\nCustomer pays: " + amount + " SEK via " + paymentMethod);

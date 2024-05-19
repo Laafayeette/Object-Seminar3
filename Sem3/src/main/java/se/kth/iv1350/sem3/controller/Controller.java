@@ -107,10 +107,10 @@ public class Controller {
     public double pay(double amount, String paymentMethod) throws DatabaseConnectionException, IllegalArgumentException {
         PaymentMethodFactory paymentMethodFactory = PaymentMethodFactory.getInstance();
         PaymentResult paymentResult = sale.pay(amount, paymentMethodFactory.getDefaultPaymentMethodStrategy(paymentMethod));
-        printer.print(paymentResult.getReceipt());
+        printer.print(paymentResult.receipt());
         saleLog.registerSaleLog(sale.getSaleDTO());
         updateExternalSystems();
-        return paymentResult.getCustomerChange();
+        return paymentResult.customerChange();
     }
 
     public Sale getSale() {

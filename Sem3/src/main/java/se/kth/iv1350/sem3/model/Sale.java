@@ -109,29 +109,6 @@ public class Sale {
         return saleDTO;
     }
 
-    public double getCurrentTotalPrice() {
-        return currentTotalPrice;
-    }
-
-    public List<ItemDTO> getSaleDTOItemList() {
-        return purchasedItems;
-    }
-
-    public void setCurrentTotalPrice(double currentTotalPrice) {
-        this.currentTotalPrice = currentTotalPrice;
-    }
-
-    public void setPurchasedItems(List<ItemDTO> purchasedItems) {
-        this.purchasedItems = purchasedItems;
-    }
-
-    public void setSaleDTO(SaleDTO saleDTO) {
-        this.saleDTO = saleDTO;
-    }
-
-    public SaleDTO getSaleDTO() {
-        return saleDTO;
-    }
 
     /**
      * Handles the payment for the Sale class.
@@ -183,4 +160,29 @@ public class Sale {
     public void addSaleObservers(List<SaleObserver> saleObservers) {
         this.saleObservers.addAll(saleObservers);
     }
+
+    public double getCurrentTotalPrice() {
+        return currentTotalPrice;
+    }
+
+    public List<ItemDTO> getSaleDTOItemList() {
+        return purchasedItems;
+    }
+
+    public void setCurrentTotalPrice(double currentTotalPrice) {
+        this.currentTotalPrice = currentTotalPrice;
+    }
+
+    public void setPurchasedItems(List<ItemDTO> purchasedItems) {
+        this.purchasedItems = purchasedItems;
+    }
+
+    public void setSaleDTO(SaleDTO saleDTO) {
+        this.saleDTO = saleDTO;
+    }
+
+    public SaleDTO getSaleDTO() {
+        return saleDTO;
+    }
+
 }

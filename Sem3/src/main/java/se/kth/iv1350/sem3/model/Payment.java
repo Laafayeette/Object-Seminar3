@@ -8,9 +8,10 @@ public class Payment {
 
     /**
      * Constructor for the {@link Payment} class.
-     * Initializes the arguments and calculates the change to give back to the customer.
+     * Initializes the arguments.
      * @param amount The amount given from the customer.
      * @param currentTotalPrice The total price to be paid for the whole sale.
+     * @param paymentMethodStrategy The encapsulated method of payment.
      */
     public Payment(double amount, double currentTotalPrice, PaymentMethodStrategy paymentMethodStrategy) {
         this.amount = amount;
@@ -43,7 +44,7 @@ public class Payment {
      * @return The amount of change to be returned to the customer.
      */
     public double getCustomerChange() {
-        return paymentMethodStrategy.calculateCustomerchange(amount, currentTotalPrice);
+        return paymentMethodStrategy.calculateCustomerChange(amount, currentTotalPrice);
     }
 
     public double getAmount() {
