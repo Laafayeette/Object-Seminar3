@@ -18,7 +18,6 @@ public class Sale {
 
     private SaleDTO saleDTO;
 
-    //En lista av observers
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
     private PaymentMethodStrategy paymentMethodStrategy;
@@ -85,11 +84,8 @@ public class Sale {
     public SaleDTO increaseQuantity(int itemID) {
             for (ItemDTO item : purchasedItems) {
                 if (item.getItemID() == itemID) {
-                    //System.out.println("This is the itemQuantity: " + item.getQuantity());
 
                     int quantity = item.getQuantity() + 1;
-                    ///System.out.println("This is the quantity after incrementing the quantity: " + quantity);
-                    //System.out.println(item.toString());
 
                     ItemDTO updatedItemWithQuantity = new ItemDTO(item.getItemName(), itemID, item.getItemPrice(), item.getItemVAT(), quantity);
 
@@ -103,7 +99,6 @@ public class Sale {
                     return saleDTO;
                 }
             }
-            //throw new DatabaseConnectionException("")
         System.out.println("A String never meant to be reached");
         this.saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, totalVAT);
         return saleDTO;
