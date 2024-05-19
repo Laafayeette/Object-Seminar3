@@ -43,7 +43,7 @@ public class InventorySystem {
      */
     public ItemDTO fetchItemInfo(int itemID) throws ItemInvalidException, DatabaseConnectionException {
         if(itemID == 7){
-            System.out.println("You have reached the itemID == 7 block, in fetchItemInfo (InventorySystem");
+            //System.out.println("You have reached the itemID == 7 block, in fetchItemInfo (InventorySystem");
             throw new DatabaseConnectionException("Database call failed, please try again or check your connection.");
         }
         for(ItemDTO item : itemsInStore) {
@@ -52,7 +52,7 @@ public class InventorySystem {
             }
         }
         //If we cant find with the item then we throw the exception..!!!!
-        System.out.println("About to throw an ItemInvalidException in fetchItemInfo to Controller (InventorySystem)");
+        //System.out.println("About to throw an ItemInvalidException in fetchItemInfo to Controller (InventorySystem)");
         throw new ItemInvalidException(itemID);
     }
 
