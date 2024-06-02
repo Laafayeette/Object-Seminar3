@@ -40,8 +40,10 @@ public class TotalRevenueFileOutput implements SaleObserver {
      */
     @Override
     public void updateTotalRevenue(double revenue) {
-        totalRevenue = totalRevenue + revenue;
-        log(totalRevenue);
+        totalRevenue = totalRevenue + revenue;  //Generell
+        log(totalRevenue);  //Specifik (Blir detta do..?)
+        //Låt denna print ovan bli en privat metod i denna klass, som sedan anrops av Template.
+        //Alltså som printCurrentState
     }
 
     private void log(double totalRevenue) {

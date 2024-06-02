@@ -17,7 +17,11 @@ public class TotalRevenueView implements SaleObserver {
      */
     @Override
     public void updateTotalRevenue(double revenue) {
-        totalRevenue = totalRevenue + revenue;
-        System.out.println("Total Revenue: " + totalRevenue + " SEK");
+        totalRevenue = totalRevenue + revenue;  //Generell
+        //Låt denna print ovan bli en privat metod i denna klass, som sedan anrops av Template.
+    }
+
+    private void printLogTotalRevenue() {
+        System.out.println("Total Revenue: " + totalRevenue + " SEK");  //Specifik
     }
 }

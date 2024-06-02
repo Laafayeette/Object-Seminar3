@@ -12,7 +12,6 @@ import se.kth.iv1350.sem3.model.SaleObserver;
  */
 public abstract class TotalRevenueTemplate implements SaleObserver {
 
-    public void
 
 
     protected abstract void doShowTotalRevenue() throws Exception;
