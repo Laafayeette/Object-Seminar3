@@ -98,7 +98,7 @@ public class Controller {
      * @return Change given back to the customer
      * @throws IllegalArgumentException If the given paymentMethod is unsupported by the retail store.
      */
-    public double pay(double amount, String paymentMethod) throws DatabaseConnectionException, IllegalArgumentException {
+    public double pay(double amount, String paymentMethod) throws Exception {
         PaymentMethodFactory paymentMethodFactory = PaymentMethodFactory.getInstance();
         PaymentResult paymentResult = sale.pay(amount, paymentMethodFactory.getDefaultPaymentMethodStrategy(paymentMethod));
         printer.print(paymentResult.receipt());

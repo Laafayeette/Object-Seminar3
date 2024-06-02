@@ -72,6 +72,8 @@ public class View {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
             errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card. Please try a different payment method.");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -116,6 +118,8 @@ public class View {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
             errorMsgHandler.showMessage("The payment method you have entered is invalid, we only accept cash or credit card. Please try a different payment method.");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

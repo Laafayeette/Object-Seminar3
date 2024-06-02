@@ -110,7 +110,7 @@ public class Sale {
      * @param paymentMethodStrategy The implementation of the payment method.
      * @return An instance of {@link PaymentResult}.
      */
-    public PaymentResult pay(double amount, PaymentMethodStrategy paymentMethodStrategy) {
+    public PaymentResult pay(double amount, PaymentMethodStrategy paymentMethodStrategy) throws Exception {
         Payment payment = new Payment(amount, getCurrentTotalPrice(), paymentMethodStrategy);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
         notifyObservers();
@@ -120,7 +120,7 @@ public class Sale {
     /**
      * Anropar på alla observers i saleObservers (listan) och skickar totala priset till updateTotalRevenue-metoden.
      */
-    private void notifyObservers() {
+    private void notifyObservers() throws Exception {
         for(SaleObserver obs : saleObservers) {
             obs.updateTotalRevenue(getCurrentTotalPrice());
         }

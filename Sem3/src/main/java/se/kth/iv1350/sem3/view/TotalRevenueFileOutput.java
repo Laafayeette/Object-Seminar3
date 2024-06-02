@@ -23,6 +23,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
 
     @Override
     protected void handleErrors(Exception e) {
+        e.printStackTrace();
     }
 
 
