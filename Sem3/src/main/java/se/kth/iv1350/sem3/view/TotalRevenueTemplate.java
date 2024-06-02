@@ -24,15 +24,23 @@ public abstract class TotalRevenueTemplate implements SaleObserver {
     @Override
     public void updateTotalRevenue(double revenue) throws Exception {
         totalRevenue = totalRevenue + revenue;  //Generell
-        printLogTotalRevenue(totalRevenue);  //Specifik (Blir detta do..?)
+        showPrintLogTotalRevenue(totalRevenue);  //Specifik (Blir detta do..?)
         //Låt denna print ovan bli en privat metod i denna klass, som sedan anrops av Template.
         //Alltså som printCurrentState
+    }
+
+    private void showPrintLogTotalRevenue(double totalRevenue) {
+        try {
+            doPrintLogTotalRevenue(totalRevenue);
+        } catch (Exception e) {
+            handleErrors(e);
+        }
     }
 
     //Dags att definiera en abstrakt metod i subklasserna som gör det som är specifikt.
 
 
-    protected abstract void printLogTotalRevenue(double totalRevenue) throws Exception;
+    protected abstract void doPrintLogTotalRevenue(double totalRevenue) throws Exception;
 
     protected abstract void handleErrors(Exception e);
 }
