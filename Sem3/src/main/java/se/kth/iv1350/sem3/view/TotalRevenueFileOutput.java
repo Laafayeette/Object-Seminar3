@@ -12,11 +12,13 @@ import java.time.LocalDateTime;
  */
 public class TotalRevenueFileOutput implements SaleObserver {
 
-    private PrintWriter logStream;
-    private LocalDateTime localDateTime = LocalDateTime.now();
+    private PrintWriter logStream;  //Specifik
+    private LocalDateTime localDateTime = LocalDateTime.now(); //Specifik
 
-    private double totalRevenue = 0;
+    private double totalRevenue = 0;    //Generell
 
+
+    //*     KODEN NEDAN ÄR SPECIFIK FÖR LOGGING * //
     /**
      * Constructor for the {@link TotalRevenueFileOutput} class.
      * Instantiates an object of type {@link PrintWriter}.
@@ -29,6 +31,7 @@ public class TotalRevenueFileOutput implements SaleObserver {
             e.printStackTrace();
         }
     }
+
 
     /**
      * An implementation of the {@link SaleObserver} class.

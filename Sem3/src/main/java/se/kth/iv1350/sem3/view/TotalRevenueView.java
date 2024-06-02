@@ -8,7 +8,7 @@ import se.kth.iv1350.sem3.model.SaleObserver;
  */
 public class TotalRevenueView implements SaleObserver {
 
-    private double totalRevenue = 0;
+    private double totalRevenue = 0; //Generell
 
     /**
      * An implementation of the {@link SaleObserver} class.
