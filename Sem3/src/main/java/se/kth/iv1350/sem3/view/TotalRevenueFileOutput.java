@@ -10,12 +10,21 @@ import java.time.LocalDateTime;
 /**
  * This class represents and handles the <code>totalRevenue</code> to be logged to a file.
  */
-public class TotalRevenueFileOutput implements SaleObserver {
+public class TotalRevenueFileOutput extends TotalRevenueTemplate {
 
     private PrintWriter logStream;  //Specifik
     private LocalDateTime localDateTime = LocalDateTime.now(); //Specifik
 
-    private double totalRevenue = 0;    //Generell
+
+    @Override
+    protected void printLogTotalRevenue(double totalRevenue) throws Exception {
+        logStream.println("The total revenue is: " + String.format("%.2f",totalRevenue) + " SEK" + " calculated at: " + localDateTime + "\n");
+    }
+
+    @Override
+    protected void handleErrors(Exception e) {
+    }
+
 
 
     //*     KODEN NEDAN ÄR SPECIFIK FÖR LOGGING * //
@@ -33,20 +42,4 @@ public class TotalRevenueFileOutput implements SaleObserver {
     }
 
 
-    /**
-     * An implementation of the {@link SaleObserver} class.
-     * Updates the <code>totalRevenue</code> and writes it to a file.
-     * @param revenue The <code>revenue</code> generated from a {@link Sale}.
-     */
-    @Override
-    public void updateTotalRevenue(double revenue) {
-        totalRevenue = totalRevenue + revenue;  //Generell
-        log(totalRevenue);  //Specifik (Blir detta do..?)
-        //Låt denna print ovan bli en privat metod i denna klass, som sedan anrops av Template.
-        //Alltså som printCurrentState
-    }
-
-    private void log(double totalRevenue) {
-        logStream.println("The total revenue is: " + String.format("%.2f",totalRevenue) + " SEK" + " calculated at: " + localDateTime + "\n");
-    }
 }
