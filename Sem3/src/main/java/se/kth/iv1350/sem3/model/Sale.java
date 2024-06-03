@@ -31,7 +31,7 @@ public class Sale {
         this.purchasedItems = new ArrayList<>();
         this.currentTotalPrice = 0;
         this.totalVAT = 0;
-        this.hashMapInheritance = new HashMapInheritance<>(getSaleDTO(), new HashMapLogger());
+        this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger());
     }
 
     private List<ItemDTO> printOutList() {

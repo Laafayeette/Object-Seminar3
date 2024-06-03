@@ -11,12 +11,10 @@ import java.util.Map;
 
 public class HashMapInheritance<K, V> extends HashMap<K, V> {
 
-    private final SaleDTO saleDTO;
 
     private final HashMapLogger mapLogger;
 
-    public HashMapInheritance(SaleDTO saleDTO, HashMapLogger mapLogger) {
-        this.saleDTO = saleDTO;
+    public HashMapInheritance( HashMapLogger mapLogger) {
         this.mapLogger = mapLogger;
     }
 
