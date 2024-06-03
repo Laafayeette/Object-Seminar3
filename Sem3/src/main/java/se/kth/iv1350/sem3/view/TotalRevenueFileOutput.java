@@ -1,8 +1,5 @@
 package se.kth.iv1350.sem3.view;
 
-import se.kth.iv1350.sem3.model.Sale;
-import se.kth.iv1350.sem3.model.SaleObserver;
-
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -30,7 +27,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
 
 
 
-    //*     KODEN NEDAN ÄR SPECIFIK FÖR LOGGING * //
+    //*     KODEN NEDAN ÄR SPECIFIK FÖR LOGGING     *//
     /**
      * Constructor for the {@link TotalRevenueFileOutput} class.
      * Instantiates an object of type {@link PrintWriter}.
