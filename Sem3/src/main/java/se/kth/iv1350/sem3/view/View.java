@@ -8,6 +8,7 @@ import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 
 import java.text.DecimalFormat;
 import java.util.Random;
+import java.util.random.RandomGenerator;
 
 /**
  * This class represents and stimulates the cashier's and customer's activity within the sale.
@@ -102,6 +103,9 @@ public class View {
                 }
             }
             System.out.println("\nQuantity of this item sold: " + quantity);
+            RandomGenerator randomN = RandomGenerator.of("Random");
+            long value = randomN.nextBoolean() ? random.nextInt(maxQuantity) : random.nextInt(minQuantity);
+            System.out.println("This is a randomy generated number: " + value);
         }
         contr.endSale();
         printEndSale();
