@@ -20,5 +20,6 @@ public class Main {
         View view = new View(contr);
         view.sampleExecution();
         view.sampleExecution1();
+        //Testa vy:n här genom att printa något generiskt.
     }
 }

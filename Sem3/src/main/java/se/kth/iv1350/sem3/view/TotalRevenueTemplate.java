@@ -22,7 +22,7 @@ public abstract class TotalRevenueTemplate implements SaleObserver {
      * @param revenue The <code>revenue</code> generated from a {@link Sale}.
      */
     @Override
-    public void updateTotalRevenue(double revenue) throws Exception {
+    public void updateTotalRevenue(double revenue) {
         totalRevenue = totalRevenue + revenue;  //Generell
         showPrintLogTotalRevenue(totalRevenue);  //Specifik (Blir detta do..?)
         //Låt denna print ovan bli en privat metod i denna klass, som sedan anrops av Template.
