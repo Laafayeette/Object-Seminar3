@@ -15,20 +15,26 @@ public class HashMapLogger {
     private LocalDateTime localDateTime = LocalDateTime.now();
 
     /**
-     * Constructor for the {@link se.kth.iv1350.sem3.view.TotalRevenueFileOutput} class.
+     * Constructor for the {@link se.kth.iv1350.sem3.util.HashMapLogger} class.
      * Instantiates an object of type {@link PrintWriter}.
-     * Tells the <code>logStream</code> to write to the "TotalRevenue.txt" file.
+     * Tells the <code>logStream</code> to write to the "HashMapLog.txt" file.
      */
     public HashMapLogger() {
         try {
-            logStream = new PrintWriter(new FileWriter("HashMapLog123.txt", true), true);
+            logStream = new PrintWriter(new FileWriter("HashMapLog.txt", true), true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Logs the specified key-value pair with an appended string for context to the specified logStream i.e., the text file.
+     * @param key The name of the sold item.
+     * @param value The price of the sold item
+     * @param <K> The type of the key, representing the name of the sold item.
+     * @param <V> The type of the value, representing the price of the sold item.
+     */
     public <K, V> void log(K key, V value) {
-        logStream.println(key + ": " + value);
         logStream.println("Item: " + key + ", Price: " + value + ", Logged at: " + localDateTime + "\n");
     }
 }

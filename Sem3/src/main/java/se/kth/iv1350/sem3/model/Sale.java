@@ -22,7 +22,7 @@ public class Sale {
 
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
-    private HashMapInheritance hashMapInheritance;
+    private HashMapInheritance<String, Double> hashMapInheritance;
 
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
