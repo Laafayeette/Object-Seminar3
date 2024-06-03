@@ -8,6 +8,8 @@ import se.kth.iv1350.sem3.model.SaleObserver;
  */
 public class TotalRevenueView extends TotalRevenueTemplate {
 
+    private final ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
+
 
     @Override
     protected void doPrintLogTotalRevenue(double totalRevenue) throws Exception {
@@ -17,6 +19,6 @@ public class TotalRevenueView extends TotalRevenueTemplate {
 
     @Override
     protected void handleErrors(Exception e) {
-
+        errorMsgHandler.showMessage("Operation resulted in error.");
     }
 }

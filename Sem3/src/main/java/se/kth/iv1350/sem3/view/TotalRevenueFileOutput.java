@@ -15,6 +15,8 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
     private PrintWriter logStream;  //Specifik
     private LocalDateTime localDateTime = LocalDateTime.now(); //Specifik
 
+    private final ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
+
 
     @Override
     protected void doPrintLogTotalRevenue(double totalRevenue) throws Exception {
@@ -23,6 +25,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
 
     @Override
     protected void handleErrors(Exception e) {
+        errorMsgHandler.showMessage("Operation resulted in error.");
     }
 
 
