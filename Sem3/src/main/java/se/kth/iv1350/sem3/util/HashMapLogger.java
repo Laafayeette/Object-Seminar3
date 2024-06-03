@@ -3,7 +3,6 @@ package se.kth.iv1350.sem3.util;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 public class HashMapLogger {
 
@@ -34,8 +33,12 @@ public class HashMapLogger {
      * @param <K> The type of the key, representing the name of the sold item.
      * @param <V> The type of the value, representing the price of the sold item.
      */
-    public <K, V> void log(K key, V value) {
+    public <K, V> void addLog(K key, V value) {
         logStream.println("Item: " + key + ", Price: " + value + ", Logged at: " + localDateTime + "\n");
+    }
+
+    public <K, V> void removeItemLog(K key) {
+        logStream.println("Item: " + key + " removed at: "+ " Logged at: " + localDateTime + "\n");
     }
 }
 

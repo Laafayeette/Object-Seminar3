@@ -14,9 +14,9 @@ public class HashMapComposition<K, V> {
         this.mapLogger = mapLogger;
     }
 
-    public V put(K key, V value) {
-        mapLogger.log(key, value);
-        return hashMap.put(key, value);
+    public void put(K key, V value) {
+        mapLogger.addLog(key, value);
+        hashMap.put(key, value);
     }
 
     public V get(K key) {

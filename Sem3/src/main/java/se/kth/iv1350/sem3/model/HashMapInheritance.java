@@ -14,16 +14,26 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
 
     @Override
     public V put(K key, V value) {
-        mapLogger.log(key, value);
+        mapLogger.addLog(key, value);
         System.out.println("We are here");
         return super.put(key, value);
     }
 
-//    @Override
-//    public V remove(Object key) {
-//        mapLogger.log(key, null);
-//        return super.remove(key);
-//    }
+    @Override
+    public V remove(Object key) throws IllegalArgumentException {
+            mapLogger.removeItemLog(key);
+            return super.remove(key);
+    }
+
+    @Override
+    public boolean containsValue(Object value) {
+        try {
+            return super.containsValue(value);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 
