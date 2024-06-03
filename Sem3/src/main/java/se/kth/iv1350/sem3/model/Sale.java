@@ -4,6 +4,7 @@ import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.util.HashMapLogger;
 
+import java.nio.DoubleBuffer;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -24,6 +25,8 @@ public class Sale {
 
     private HashMapInheritance<String, Double> hashMapInheritance;
 
+    private HashMapComposition<String, Double> hashMapComposition;
+
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
      */
@@ -31,7 +34,8 @@ public class Sale {
         this.purchasedItems = new ArrayList<>();
         this.currentTotalPrice = 0;
         this.totalVAT = 0;
-        this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger());
+        this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger("HashMapLog1.txt"));
+        this.hashMapComposition = new HashMapComposition<>(new HashMapLogger("HashMapLog2.txt"));
     }
 
     private List<ItemDTO> printOutList() {
@@ -119,13 +123,20 @@ public class Sale {
         Payment payment = new Payment(amount, getCurrentTotalPrice(), paymentMethodStrategy);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
         notifyObservers();
-        logSoldItems();
+        logSoldItemsInheritance();
+        logSoldItemsComposition();
         return new PaymentResult(receipt, payment.getCustomerChange());
     }
 
-    private void logSoldItems() {
+    private void logSoldItemsInheritance() {
         for (ItemDTO item : getSaleDTO().getPurchasedItems()) {
             hashMapInheritance.put(item.getItemName(), item.getItemPrice());
+        }
+    }
+
+    private void logSoldItemsComposition() {
+        for (ItemDTO item : getSaleDTO().getPurchasedItems()) {
+            hashMapComposition.put(item.getItemName(), item.getItemPrice());
         }
     }
 

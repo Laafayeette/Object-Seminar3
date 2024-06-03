@@ -1,15 +1,31 @@
 package se.kth.iv1350.sem3.model;
 
+import se.kth.iv1350.sem3.util.HashMapLogger;
+
 import java.util.HashMap;
 
 public class HashMapComposition<K, V> {
 
     private HashMap<K, V> hashMap =  new HashMap<>();
 
+    private final HashMapLogger mapLogger;
 
-
-    public void put(K key, V value) {
-
-        hashMap.put(key, value);
+    public HashMapComposition(HashMapLogger mapLogger) {
+        this.mapLogger = mapLogger;
     }
+
+    public V put(K key, V value) {
+        mapLogger.log(key, value);
+        return hashMap.put(key, value);
+    }
+
+    public V get(K key) {
+        return hashMap.get(key);
+    }
+
+    public V remove(K key) {
+        return hashMap.remove(key);
+    }
+
+
 }

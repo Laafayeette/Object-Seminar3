@@ -1,16 +1,10 @@
 package se.kth.iv1350.sem3.model;
 
-import se.kth.iv1350.sem3.integration.dto.ItemDTO;
-import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.util.HashMapLogger;
 
-
-import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Map;
 
 public class HashMapInheritance<K, V> extends HashMap<K, V> {
-
 
     private final HashMapLogger mapLogger;
 

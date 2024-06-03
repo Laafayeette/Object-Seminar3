@@ -19,9 +19,9 @@ public class HashMapLogger {
      * Instantiates an object of type {@link PrintWriter}.
      * Tells the <code>logStream</code> to write to the "HashMapLog.txt" file.
      */
-    public HashMapLogger() {
+    public HashMapLogger(String fileName) {
         try {
-            logStream = new PrintWriter(new FileWriter("HashMapLog.txt", true), true);
+            logStream = new PrintWriter(new FileWriter(fileName, true), true);
         } catch (Exception e) {
             e.printStackTrace();
         }
