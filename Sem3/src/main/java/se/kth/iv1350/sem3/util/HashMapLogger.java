@@ -21,24 +21,15 @@ public class HashMapLogger {
      */
     public HashMapLogger() {
         try {
-            logStream = new PrintWriter(new FileWriter("HashMapLog.txt"), true);
+            logStream = new PrintWriter(new FileWriter("HashMapLog123.txt", true), true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-//    public void logHashMap(K Key, V value) {
-//
-//        logHashMap(key, value);
-//    }
-
-//    private void log(double totalRevenue) {
-//        logStream.println("The total revenue is: " + String.format("%.2f",totalRevenue) + " SEK" + " calculated at: " + localDateTime + "\n");
-//    }
-
-    public <K, V> void log(Map<String, Double> itemInfo) {
-        logStream.println("This is the item info: " + itemInfo);
-        //logStream.println("The hashmap key is: " + key + " and value is: " + value + " logged at: " + localDateTime + "\n");
+    public <K, V> void log(K key, V value) {
+        logStream.println(key + ": " + value);
+        logStream.println("Item: " + key + ", Price: " + value + ", Logged at: " + localDateTime + "\n");
     }
 }
 

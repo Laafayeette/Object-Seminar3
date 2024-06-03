@@ -4,9 +4,11 @@ import se.kth.iv1350.sem3.integration.*;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.model.*;
+import se.kth.iv1350.sem3.util.HashMapLogger;
 import se.kth.iv1350.sem3.util.LogHandler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,6 +25,7 @@ public class Controller {
     private Sale sale;
 
     private LogHandler logger;
+    //private HashMapLogger mapLogger;
 
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
@@ -36,6 +39,7 @@ public class Controller {
         printer = new Printer();
         saleLog = new SaleLog();
         this.logger = new LogHandler();
+       // this.mapLogger = new HashMapLogger();
     }
 
     /**
@@ -106,6 +110,8 @@ public class Controller {
         updateExternalSystems();
         return paymentResult.customerChange();
     }
+
+
 
     public Sale getSale() {
         return sale;
