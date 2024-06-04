@@ -24,12 +24,13 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
         System.out.println("Abou...");
         if(super.containsKey(key)) {
             System.out.println("About to throw exception");
-            throw new IllegalArgumentException("The specified item " + key + " does not exist in the map");
+            throw new IllegalArgumentException("The specified item " + "\"" + key + "\""+ " does not exist in the map");
         }
-        mapLogger.removeItemLog(key);
+        mapLogger.removeLog(key);
         return super.remove(key);
     }
 
+    //Remove later
     @Override
     public boolean containsValue(Object value) {
         try {
