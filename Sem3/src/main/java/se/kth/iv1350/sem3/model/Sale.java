@@ -35,9 +35,9 @@ public class Sale {
         this.purchasedItems = new ArrayList<>();
         this.currentTotalPrice = 0;
         this.totalVAT = 0;
-        this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger("HashMapLog1.txt"));
-        this.hashMapComposition = new HashMapComposition<>(new HashMapLogger("HashMapLog2.txt"));
-        this.logger = new LogHandler("HashMapLog1.txt");
+        this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger("HashMapLogInheritance.txt"));
+        this.hashMapComposition = new HashMapComposition<>(new HashMapLogger("HashMapLogComposition.txt"));
+        this.logger = new LogHandler("HashMapLogInheritance.txt");
     }
 
     private List<ItemDTO> printOutList() {
@@ -129,9 +129,6 @@ public class Sale {
         logSoldItemsComposition();
         try {
             hashMapInheritance.remove(saleDTO.getItemDTO(3).getItemName());
-        } catch (IllegalArgumentException e) {
-            System.out.println("This is the getmessage: " +e.getMessage());
-            logger.log(e);
         } catch (Exception e) {
             logger.log(e);
         }
