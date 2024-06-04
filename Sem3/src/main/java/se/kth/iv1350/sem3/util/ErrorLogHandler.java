@@ -8,14 +8,6 @@ public class ErrorLogHandler {
     private PrintWriter logStream;
     private LocalDateTime localDateTime = LocalDateTime.now();
 
-    public ErrorLogHandler() {
-        try {
-            logStream = new PrintWriter(new FileWriter("log123.txt", true), true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public ErrorLogHandler(String fileName) {
         try {
             logStream = new PrintWriter(new FileWriter(fileName, true), true);

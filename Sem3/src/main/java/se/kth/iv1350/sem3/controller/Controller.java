@@ -22,7 +22,7 @@ public class Controller {
 
     private Sale sale;
 
-    private ErrorLogHandler logger;
+    private ErrorLogHandler errorLogger;
 
     private List<SaleObserver> saleObservers = new ArrayList<>();
 
@@ -35,7 +35,7 @@ public class Controller {
         invSys = new InventorySystem();
         printer = new Printer();
         saleLog = new SaleLog();
-        this.logger = new ErrorLogHandler();
+        this.errorLogger = new ErrorLogHandler("ScannedItemErrorLog.txt");
     }
 
     /**
@@ -69,7 +69,7 @@ public class Controller {
                 SaleDTO saleDTO = sale.updateSale(itemDTO);
                 return saleDTO;
             } catch (ItemInvalidException | DatabaseConnectionException e) {
-                logger.log(e);
+                errorLogger.log(e);
                 throw e;
             }
         }
