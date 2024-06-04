@@ -129,7 +129,17 @@ public class Sale {
         logSoldItemsComposition();
         removeItemFromMapInheritance(3);
         removeItemFromMapComposition(2);
+        getSizeOfInheritanceMap();
+        getSizeofCompositionMap();
         return new PaymentResult(receipt, payment.getCustomerChange());
+    }
+
+    private void getSizeOfInheritanceMap() {
+        hashMapInheritance.size();
+    }
+
+    private void getSizeofCompositionMap() {
+        hashMapComposition.size();
     }
 
     private void removeItemFromMapInheritance(int itemIDToRemove) {
