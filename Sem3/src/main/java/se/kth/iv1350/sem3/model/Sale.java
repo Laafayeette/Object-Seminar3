@@ -25,7 +25,8 @@ public class Sale {
     private HashMapInheritance<String, Double> hashMapInheritance;
 
     private HashMapComposition<String, Double> hashMapComposition;
-    private ErrorLogHandler errorLogger;
+    private ErrorLogHandler errorLoggerForInheritance;
+    private ErrorLogHandler errorLoggerForComposition;
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
      */
@@ -35,7 +36,8 @@ public class Sale {
         this.totalVAT = 0;
         this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger("HashMapLogInheritance.txt"));
         this.hashMapComposition = new HashMapComposition<>(new HashMapLogger("HashMapLogComposition.txt"));
-        this.errorLogger = new ErrorLogHandler("HashMapLogInheritance.txt");
+        this.errorLoggerForInheritance = new ErrorLogHandler("HashMapLogInheritance.txt");
+        this.errorLoggerForComposition = new ErrorLogHandler("HashMapLogComposition.txt");
     }
 
     private List<ItemDTO> printOutList() {
@@ -125,12 +127,25 @@ public class Sale {
         notifyObservers();
         logSoldItemsInheritance();
         logSoldItemsComposition();
-        try {
-            hashMapInheritance.remove(saleDTO.getItemDTO(3).getItemName());
-        } catch (Exception e) {
-            errorLogger.log(e);
-        }
+        removeItemFromMapInheritance(3);
+        removeItemFromMapComposition(2);
         return new PaymentResult(receipt, payment.getCustomerChange());
+    }
+
+    private void removeItemFromMapInheritance(int itemIDToRemove) {
+        try {
+            hashMapInheritance.remove(saleDTO.getItemDTO(itemIDToRemove).getItemName());
+        } catch (Exception e) {
+            errorLoggerForInheritance.log(e);
+        }
+    }
+
+    private void removeItemFromMapComposition(int itemIDToRemove) {
+        try {
+            hashMapComposition.remove(saleDTO.getItemDTO(itemIDToRemove).getItemName());
+        } catch (Exception e) {
+            errorLoggerForComposition.log(e);
+        }
     }
 
     private void logSoldItemsInheritance() {
