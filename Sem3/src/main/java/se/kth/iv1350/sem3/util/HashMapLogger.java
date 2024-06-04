@@ -51,5 +51,9 @@ public class HashMapLogger {
     public <K> void logRemovedItemToMap(K key) {
         logStream.println("Item: " + key + " removed from map at: "+ " Logged at: " + localDateTime + "\n");
     }
+
+    public void logSizeOfMap(int size) {
+        logStream.println("Map size: " + size + "\n");
+    }
 }
 

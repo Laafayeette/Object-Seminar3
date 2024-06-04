@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class HashMapComposition<K, V> {
 
-    private HashMap<K, V> hashMap =  new HashMap<>();
+    private HashMap<K, V> hashMap = new HashMap<>();
 
     private final HashMapLogger mapLogger;
 
@@ -27,5 +27,10 @@ public class HashMapComposition<K, V> {
         }
         mapLogger.logRemovedItemToMap(key);
         hashMap.remove(key);
+    }
+
+    public int size() {
+        mapLogger.logSizeOfMap(hashMap.size());
+        return hashMap.size();
     }
 }

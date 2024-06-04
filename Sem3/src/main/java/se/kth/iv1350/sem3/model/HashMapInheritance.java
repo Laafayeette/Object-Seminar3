@@ -55,6 +55,13 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
         return super.remove(key);
     }
 
+
+    @Override
+    public int size() {
+        mapLogger.logSizeOfMap(super.size());
+        return super.size();
+    }
+
     //Remove later
     @Override
     public boolean containsValue(Object value) {
