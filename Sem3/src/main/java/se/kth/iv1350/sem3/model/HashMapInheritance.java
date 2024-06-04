@@ -56,7 +56,7 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
     /**
      * Retrieves the size of the map, i.e the number of key-value mappings in the map,
      * and logs the size to the specified text file.
-     * @return The size of the map.
+     * @return The size of the map, in terms of number of mappings.
      */
     @Override
     public int size() {
