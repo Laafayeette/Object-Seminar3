@@ -103,9 +103,6 @@ public class View {
                 }
             }
             System.out.println("\nQuantity of this item sold: " + quantity);
-            RandomGenerator randomN = RandomGenerator.of("Random");
-            long value = randomN.nextBoolean() ? random.nextInt(maxQuantity) : random.nextInt(minQuantity);
-            System.out.println("This is a randomy generated number: " + value);
         }
         contr.endSale();
         printEndSale();
