@@ -20,9 +20,7 @@ public class HashMapComposition<K, V> {
     }
 
     public void remove(K key) {
-        System.out.println("Abou...");
         if(!hashMap.containsKey(key)) {
-            System.out.println("About to throw exception");
             throw new IllegalArgumentException("Could not remove item from map. The specified item " + "\"" + key + "\""+ " does not exist in the map");
         }
         mapLogger.logRemovedItemToMap(key);

@@ -46,9 +46,7 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
      */
     @Override
     public V remove(Object key) throws IllegalArgumentException {
-        System.out.println("Abou...");
         if(!super.containsKey(key)) {
-            System.out.println("About to throw exception");
             throw new IllegalArgumentException("Could not remove item from map. The specified item " + "\"" + key + "\""+ " does not exist in the map");
         }
         mapLogger.logRemovedItemToMap(key);
@@ -61,18 +59,5 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
         mapLogger.logSizeOfMap(super.size());
         return super.size();
     }
-
-    //Remove later
-    @Override
-    public boolean containsValue(Object value) {
-        try {
-            return super.containsValue(value);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-
 
 }
