@@ -33,7 +33,6 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
     @Override
     public V put(K key, V value) {
         mapLogger.logAddedItemToMap(key, value);
-        System.out.println("We are here");
         return super.put(key, value);
     }
 

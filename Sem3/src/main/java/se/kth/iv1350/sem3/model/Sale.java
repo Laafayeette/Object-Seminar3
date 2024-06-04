@@ -203,5 +203,5 @@ public class Sale {
     public SaleDTO getSaleDTO() {
         return saleDTO;
     }
-    
+
 }
