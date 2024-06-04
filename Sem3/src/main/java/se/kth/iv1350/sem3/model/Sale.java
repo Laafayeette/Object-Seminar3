@@ -80,11 +80,8 @@ public class Sale {
     public SaleDTO increaseQuantity(int itemID) {
             for (ItemDTO item : purchasedItems) {
                 if (item.getItemID() == itemID) {
-                    //System.out.println("This is the itemQuantity: " + item.getQuantity());
 
                     int quantity = item.getQuantity() + 1;
-                    ///System.out.println("This is the quantity after incrementing the quantity: " + quantity);
-                    //System.out.println(item.toString());
 
                     ItemDTO updatedItemWithQuantity = new ItemDTO(item.getItemName(), itemID, item.getItemPrice(), item.getItemVAT(), quantity);
 
