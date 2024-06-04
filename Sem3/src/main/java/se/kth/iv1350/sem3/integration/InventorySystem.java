@@ -24,7 +24,7 @@ public class InventorySystem {
     }
 
     /**
-     * Generating dummy data
+     * Generating dummy data.
      */
     private void addItemsToStore() {
         items.add(new ItemDTO("Banana", 1, 7.99, 0.06));
