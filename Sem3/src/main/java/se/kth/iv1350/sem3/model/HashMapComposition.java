@@ -19,13 +19,13 @@ public class HashMapComposition<K, V> {
         hashMap.put(key, value);
     }
 
-    public V get(K key) {
-        return hashMap.get(key);
+    public void remove(K key) {
+        System.out.println("Abou...");
+        if(!hashMap.containsKey(key)) {
+            System.out.println("About to throw exception");
+            throw new IllegalArgumentException("Could not remove item from map. The specified item " + "\"" + key + "\""+ " does not exist in the map");
+        }
+        mapLogger.logRemovedItemToMap(key);
+        hashMap.remove(key);
     }
-
-    public V remove(K key) {
-        return hashMap.remove(key);
-    }
-
-
 }

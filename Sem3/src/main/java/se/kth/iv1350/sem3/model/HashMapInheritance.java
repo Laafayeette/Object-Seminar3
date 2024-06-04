@@ -47,7 +47,7 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
     @Override
     public V remove(Object key) throws IllegalArgumentException {
         System.out.println("Abou...");
-        if(super.containsKey(key)) {
+        if(!super.containsKey(key)) {
             System.out.println("About to throw exception");
             throw new IllegalArgumentException("Could not remove item from map. The specified item " + "\"" + key + "\""+ " does not exist in the map");
         }
