@@ -3,6 +3,7 @@ package se.kth.iv1350.sem3.model;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.util.HashMapLogger;
+import se.kth.iv1350.sem3.util.LogHandler;
 
 import java.nio.DoubleBuffer;
 import java.time.LocalDateTime;
@@ -26,7 +27,7 @@ public class Sale {
     private HashMapInheritance<String, Double> hashMapInheritance;
 
     private HashMapComposition<String, Double> hashMapComposition;
-
+    private LogHandler logger;
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
      */
@@ -36,6 +37,7 @@ public class Sale {
         this.totalVAT = 0;
         this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger("HashMapLog1.txt"));
         this.hashMapComposition = new HashMapComposition<>(new HashMapLogger("HashMapLog2.txt"));
+        this.logger = new LogHandler("HashMapLog1.txt");
     }
 
     private List<ItemDTO> printOutList() {
@@ -125,6 +127,14 @@ public class Sale {
         notifyObservers();
         logSoldItemsInheritance();
         logSoldItemsComposition();
+        try {
+            hashMapInheritance.remove(saleDTO.getItemDTO(3).getItemName());
+        } catch (IllegalArgumentException e) {
+            System.out.println("This is the getmessage: " +e.getMessage());
+            logger.log(e);
+        } catch (Exception e) {
+            logger.log(e);
+        }
         return new PaymentResult(receipt, payment.getCustomerChange());
     }
 
@@ -139,6 +149,8 @@ public class Sale {
             hashMapComposition.put(item.getItemName(), item.getItemPrice());
         }
     }
+
+
 
     /**
      * Anropar på alla observers i saleObservers (listan) och skickar totala priset till updateTotalRevenue-metoden.
