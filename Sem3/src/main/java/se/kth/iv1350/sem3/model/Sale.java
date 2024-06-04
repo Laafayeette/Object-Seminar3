@@ -95,7 +95,6 @@ public class Sale {
                     return saleDTO;
                 }
             }
-        System.out.println("A String never meant to be reached");
         this.saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, totalVAT);
         return saleDTO;
     }
