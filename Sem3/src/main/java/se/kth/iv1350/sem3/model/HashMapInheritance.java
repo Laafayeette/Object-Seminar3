@@ -21,8 +21,13 @@ public class HashMapInheritance<K, V> extends HashMap<K, V> {
 
     @Override
     public V remove(Object key) throws IllegalArgumentException {
-            mapLogger.removeItemLog(key);
-            return super.remove(key);
+        System.out.println("Abou...");
+        if(super.containsKey(key)) {
+            System.out.println("About to throw exception");
+            throw new IllegalArgumentException("The specified item " + key + " does not exist in the map");
+        }
+        mapLogger.removeItemLog(key);
+        return super.remove(key);
     }
 
     @Override
