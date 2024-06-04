@@ -37,7 +37,7 @@ public class HashMapLogger {
         logStream.println("Item: " + key + ", Price: " + value + ", Logged at: " + localDateTime + "\n");
     }
 
-    public <K, V> void removeItemLog(K key) {
+    public <K, V> void removeLog(K key) {
         logStream.println("Item: " + key + " removed at: "+ " Logged at: " + localDateTime + "\n");
     }
 }
