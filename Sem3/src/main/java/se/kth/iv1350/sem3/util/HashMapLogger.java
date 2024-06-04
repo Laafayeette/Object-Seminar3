@@ -22,6 +22,7 @@ public class HashMapLogger {
      * Constructor for the {@link se.kth.iv1350.sem3.util.HashMapLogger} class.
      * Instantiates an object of type {@link PrintWriter}.
      * Tells the <code>logStream</code> to write to the specified text file.
+     * @param fileName The specified name of the text file.
      */
     public HashMapLogger(String fileName) {
         try {
