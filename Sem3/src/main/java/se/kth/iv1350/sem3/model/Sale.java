@@ -25,7 +25,7 @@ public class Sale {
     private HashMapInheritance<String, Double> hashMapInheritance;
 
     private HashMapComposition<String, Double> hashMapComposition;
-    private ErrorLogHandler logger;
+    private ErrorLogHandler errorLogger;
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
      */
@@ -35,7 +35,7 @@ public class Sale {
         this.totalVAT = 0;
         this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger("HashMapLogInheritance.txt"));
         this.hashMapComposition = new HashMapComposition<>(new HashMapLogger("HashMapLogComposition.txt"));
-        this.logger = new ErrorLogHandler("HashMapLogInheritance.txt");
+        this.errorLogger = new ErrorLogHandler("HashMapLogInheritance.txt");
     }
 
     private List<ItemDTO> printOutList() {
@@ -128,7 +128,7 @@ public class Sale {
         try {
             hashMapInheritance.remove(saleDTO.getItemDTO(3).getItemName());
         } catch (Exception e) {
-            logger.log(e);
+            errorLogger.log(e);
         }
         return new PaymentResult(receipt, payment.getCustomerChange());
     }

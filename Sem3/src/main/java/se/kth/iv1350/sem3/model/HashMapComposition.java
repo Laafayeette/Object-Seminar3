@@ -15,7 +15,7 @@ public class HashMapComposition<K, V> {
     }
 
     public void put(K key, V value) {
-        mapLogger.addLog(key, value);
+        mapLogger.logAddedItemToMap(key, value);
         hashMap.put(key, value);
     }
 

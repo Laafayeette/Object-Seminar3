@@ -3,6 +3,9 @@ package se.kth.iv1350.sem3.util;
 import java.io.*;
 import java.time.LocalDateTime;
 
+/**
+ * This class
+ */
 public class ErrorLogHandler {
 
     private PrintWriter logStream;
