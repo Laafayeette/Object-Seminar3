@@ -12,7 +12,7 @@ public class TotalRevenueView extends TotalRevenueTemplate {
 
 
     @Override
-    protected void doPrintLogTotalRevenue(double totalRevenue) throws Exception {
+    protected void doShowTotalRevenue(double totalRevenue) throws Exception {
         System.out.println("Total Revenue: " + totalRevenue + " SEK");  //Specifik
     }
 

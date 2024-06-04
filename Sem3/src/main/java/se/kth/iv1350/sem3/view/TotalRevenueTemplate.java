@@ -31,7 +31,7 @@ public abstract class TotalRevenueTemplate implements SaleObserver {
 
     private void showPrintLogTotalRevenue(double totalRevenue) {
         try {
-            doPrintLogTotalRevenue(totalRevenue);
+            doShowTotalRevenue(totalRevenue);
         } catch (Exception e) {
             handleErrors(e);
         }
@@ -40,7 +40,7 @@ public abstract class TotalRevenueTemplate implements SaleObserver {
     //Dags att definiera en abstrakt metod i subklasserna som gör det som är specifikt.
 
 
-    protected abstract void doPrintLogTotalRevenue(double totalRevenue) throws Exception;
+    protected abstract void doShowTotalRevenue(double totalRevenue) throws Exception;
 
     protected abstract void handleErrors(Exception e);
 }
