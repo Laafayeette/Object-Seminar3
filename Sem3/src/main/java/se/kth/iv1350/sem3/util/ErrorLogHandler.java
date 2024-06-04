@@ -3,12 +3,12 @@ package se.kth.iv1350.sem3.util;
 import java.io.*;
 import java.time.LocalDateTime;
 
-public class LogHandler {
+public class ErrorLogHandler {
 
     private PrintWriter logStream;
     private LocalDateTime localDateTime = LocalDateTime.now();
 
-    public LogHandler() {
+    public ErrorLogHandler() {
         try {
             logStream = new PrintWriter(new FileWriter("log123.txt", true), true);
         } catch (IOException e) {
@@ -16,7 +16,7 @@ public class LogHandler {
         }
     }
 
-    public LogHandler(String fileName) {
+    public ErrorLogHandler(String fileName) {
         try {
             logStream = new PrintWriter(new FileWriter(fileName, true), true);
         } catch (IOException e) {

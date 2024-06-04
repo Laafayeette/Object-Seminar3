@@ -3,10 +3,8 @@ package se.kth.iv1350.sem3.model;
 import se.kth.iv1350.sem3.integration.dto.ItemDTO;
 import se.kth.iv1350.sem3.integration.dto.SaleDTO;
 import se.kth.iv1350.sem3.util.HashMapLogger;
-import se.kth.iv1350.sem3.util.LogHandler;
+import se.kth.iv1350.sem3.util.ErrorLogHandler;
 
-import java.nio.DoubleBuffer;
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -27,7 +25,7 @@ public class Sale {
     private HashMapInheritance<String, Double> hashMapInheritance;
 
     private HashMapComposition<String, Double> hashMapComposition;
-    private LogHandler logger;
+    private ErrorLogHandler logger;
     /**
      * Constructor to initialize and object of the Sale, i.e an ongoing sale.
      */
@@ -37,7 +35,7 @@ public class Sale {
         this.totalVAT = 0;
         this.hashMapInheritance = new HashMapInheritance<>(new HashMapLogger("HashMapLogInheritance.txt"));
         this.hashMapComposition = new HashMapComposition<>(new HashMapLogger("HashMapLogComposition.txt"));
-        this.logger = new LogHandler("HashMapLogInheritance.txt");
+        this.logger = new ErrorLogHandler("HashMapLogInheritance.txt");
     }
 
     private List<ItemDTO> printOutList() {
