@@ -203,13 +203,5 @@ public class Sale {
     public SaleDTO getSaleDTO() {
         return saleDTO;
     }
-
-    public Map<String, Double> getItemInfo() {
-        Map<String, Double> itemInfo = new HashMap<>();
-        for (ItemDTO item : saleDTO.getPurchasedItems()) {
-            String itemName = item.getItemName();
-            double itemPrice = item.getItemPrice();
-        }
-        return itemInfo;
-    }
+    
 }
