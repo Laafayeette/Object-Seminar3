@@ -55,9 +55,5 @@ public class HashMapLogger {
     public void logSizeOfMap(int size) {
         logStream.println("Map size: " + size + "\n");
     }
-
-    public void logIndexErrorForRemove(Exception e) {
-        logStream.println(("An index out of bounds error was thrown at: " + localDateTime + "\n The error was thrown as you tried to remove an item in the hash map that was never scanned during sale" + "The error message is: " + "\n" + e.getMessage()));
-    }
 }
 

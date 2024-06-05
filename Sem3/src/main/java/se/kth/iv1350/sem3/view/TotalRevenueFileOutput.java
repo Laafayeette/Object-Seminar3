@@ -1,5 +1,7 @@
 package se.kth.iv1350.sem3.view;
 
+import se.kth.iv1350.sem3.util.ErrorLogHandler;
+
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -9,25 +11,11 @@ import java.time.LocalDateTime;
  */
 public class TotalRevenueFileOutput extends TotalRevenueTemplate {
 
-    private PrintWriter logStream;  //Specifik
-    private LocalDateTime localDateTime = LocalDateTime.now(); //Specifik
+    private PrintWriter logStream;
+    private LocalDateTime localDateTime = LocalDateTime.now();
 
-    private final ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
+    private final ErrorLogHandler errorLogHandler = new ErrorLogHandler("TotalRevenueFileOutputError.txt");
 
-
-    @Override
-    protected void doShowTotalRevenue(double totalRevenue) throws Exception {
-        logStream.println("The total revenue is: " + String.format("%.2f",totalRevenue) + " SEK" + " calculated at: " + localDateTime + "\n");
-    }
-
-    @Override
-    protected void handleErrors(Exception e) {
-        errorMsgHandler.showMessage("Operation resulted in error.");
-    }
-
-
-
-    //*     KODEN NEDAN ÄR SPECIFIK FÖR LOGGING     *//
     /**
      * Constructor for the {@link TotalRevenueFileOutput} class.
      * Instantiates an object of type {@link PrintWriter}.
@@ -40,6 +28,17 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void doShowTotalRevenue(double totalRevenue) {
+        logStream.println("The total revenue is: " + String.format("%.2f",totalRevenue) + " SEK" + " calculated at: " + localDateTime + "\n");
+    }
+
+    @Override
+    protected void handleErrors(Exception e) {
+        errorLogHandler.log(e);
+    }
+
 
 
 }
