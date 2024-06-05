@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se.kth.iv1350.sem3.controller.Controller;
+import se.kth.iv1350.sem3.integration.DatabaseConnectionException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -57,4 +58,11 @@ class TotalRevenueViewTest {
         }
         assertNotNull(exception, "Expected exception not thrown");
     }
+
+    @Test
+    void doShowExceptionTotalRevenueWithNull1() {
+        Double totalRevenue = null;
+        assertThrows(Exception.class, () -> totalRevenueView.doShowTotalRevenue(totalRevenue));
+    }
+
 }
