@@ -52,6 +52,10 @@ public class HashMapLogger {
         logStream.println("Item: " + key + " removed from map at: "+ " Logged at: " + localDateTime + "\n");
     }
 
+    /**
+     * Logs the size of the hash map to the specified text file.
+     * @param size The size of the hash map.
+     */
     public void logSizeOfMap(int size) {
         logStream.println("Map size: " + size + "\n");
     }

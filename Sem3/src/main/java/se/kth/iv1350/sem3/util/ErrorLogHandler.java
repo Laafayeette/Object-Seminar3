@@ -35,6 +35,10 @@ public class ErrorLogHandler {
         logStream.println("\n");
     }
 
+    /**
+     * Logs the IndexOutOfBounds error with an appended custom string to the specified text file.
+     * @param e The IndexOutOfBounds error to be logged.
+     */
     public void logIndexErrorForRemove(Exception e) {
         logStream.println(("An index out of bounds error was thrown at: " + localDateTime + "\n The error was thrown as you tried to remove an item in the hash map that was never scanned during sale\n" + "The error message is: " + e.getMessage()) + "\n");
     }
