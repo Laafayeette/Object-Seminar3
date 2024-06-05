@@ -104,4 +104,31 @@ public class PrinterTest {
         String printedReceipt = outputStream.toString();
         assertEquals(expectedReceipt.strip(), printedReceipt.strip());
     }
+    @Test
+    void printerSystemOutTest() {
+        Printer printer = new Printer();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        PaymentMethodStrategy paymentMethodStrategy = new CashPaymentMethod();
+        ItemDTO item1 = new ItemDTO("Gurka", 2, 5.0, 0.25, 1);
+        purchasedItems.add(item1);
+        double item1Price = item1.getItemPrice();
+        double item1VAT = item1.getItemVAT();
+
+        double currentTotalPrice = item1Price;  //5 kr
+
+        SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
+        Payment payment = new Payment(150, currentTotalPrice, paymentMethodStrategy);
+        Receipt receipt = new Receipt(saleDTO, payment);
+        printer.print(receipt);
+        String printedReceipt = outputStream.toString();
+        System.out.println(printedReceipt);
+        List<String> expectedPrintString = List.of(
+                "Gurka", "Amount of items:", "Total Cost (incl VAT):",
+                "Total VAT:", "Date:", "Cash:", "Change:");
+        for (String expectedResult : expectedPrintString) {
+            assertTrue(printedReceipt.contains(expectedResult),
+                    "Expected output not found: " + expectedResult);
+        }
+    }
 }
