@@ -30,8 +30,12 @@ public class ErrorLogHandler {
      * @param e The specified exception that is thrown and logged to the specified text file.
      */
     public void log(Exception e) {
-        logStream.println("An exception was thrown at: " + localDateTime + " with the following message: \n" + e.getMessage());
-        System.out.println("\n\n");
+        logStream.println("An exception was thrown at: " + localDateTime + " with the following message: \n" + e.getMessage() + "\n");
         e.printStackTrace(logStream);
+        logStream.println("\n");
+    }
+
+    public void logIndexErrorForRemove(Exception e) {
+        logStream.println(("An index out of bounds error was thrown at: " + localDateTime + "\n The error was thrown as you tried to remove an item in the hash map that was never scanned during sale\n" + "The error message is: " + e.getMessage()) + "\n");
     }
 }

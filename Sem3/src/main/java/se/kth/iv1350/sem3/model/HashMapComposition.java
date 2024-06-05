@@ -44,7 +44,7 @@ public class HashMapComposition<K, V> {
      * @return The previous value associated with the key, or null if no mapping exists for the key.
      * @throws IllegalArgumentException If the given key does not exist in the map.
      */
-    public void remove(K key) {
+    public void remove(K key) throws IllegalArgumentException {
         if(!hashMap.containsKey(key)) {
             throw new IllegalArgumentException("Could not remove item from map. The specified item " + "\"" + key + "\""+ " does not exist in the map");
         }
@@ -61,4 +61,5 @@ public class HashMapComposition<K, V> {
         mapLogger.logSizeOfMap(hashMap.size());
         return hashMap.size();
     }
+
 }

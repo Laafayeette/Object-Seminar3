@@ -26,7 +26,7 @@ public class SaleDTO {
         return totalVAT;
     }
 
-    public ItemDTO getItemDTO(int index) {
+    public ItemDTO getItemDTO(int index) throws IndexOutOfBoundsException {
         return purchasedItems.get(index-1);
     }
 

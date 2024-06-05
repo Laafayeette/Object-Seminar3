@@ -125,13 +125,19 @@ public class Sale {
         Payment payment = new Payment(amount, getCurrentTotalPrice(), paymentMethodStrategy);
         Receipt receipt = new Receipt(getSaleDTO(), payment);
         notifyObservers();
+        callUponHashMap();
+        return new PaymentResult(receipt, payment.getCustomerChange());
+    }
+
+    private void callUponHashMap() {
         logSoldItemsInheritance();
         logSoldItemsComposition();
-        removeItemFromMapInheritance(3);
-        removeItemFromMapComposition(2);
+        removeItemFromMapComposition(4);
+        removeItemFromMapComposition(4);
+        removeItemFromMapComposition(5);
+        removeItemFromMapInheritance(5);
         getSizeOfInheritanceMap();
         getSizeofCompositionMap();
-        return new PaymentResult(receipt, payment.getCustomerChange());
     }
 
     private void getSizeOfInheritanceMap() {
@@ -145,7 +151,10 @@ public class Sale {
     private void removeItemFromMapInheritance(int itemIDToRemove) {
         try {
             hashMapInheritance.remove(saleDTO.getItemDTO(itemIDToRemove).getItemName());
-        } catch (Exception e) {
+        } catch (IndexOutOfBoundsException e) {
+            errorLoggerForInheritance.logIndexErrorForRemove(e);
+        }
+        catch (IllegalArgumentException e) {
             errorLoggerForInheritance.log(e);
         }
     }
@@ -153,7 +162,10 @@ public class Sale {
     private void removeItemFromMapComposition(int itemIDToRemove) {
         try {
             hashMapComposition.remove(saleDTO.getItemDTO(itemIDToRemove).getItemName());
-        } catch (Exception e) {
+        } catch (IndexOutOfBoundsException e) {
+            errorLoggerForComposition.logIndexErrorForRemove(e);
+        }
+        catch (IllegalArgumentException e) {
             errorLoggerForComposition.log(e);
         }
     }

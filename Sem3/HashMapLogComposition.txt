@@ -1,0 +1,64 @@
+Item: ABC123, Price: 10.0, Logged at: 2024-06-05T13:20:12.247505400
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.248537600
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.248537600
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.248537600
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 4 out of bounds for length 1
+
+Map size: 1
+
+Item: ABC123, Price: 12.5, Logged at: 2024-06-05T13:20:12.293611500
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.294123800
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.294123800
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.294123800
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 4 out of bounds for length 1
+
+Map size: 1
+
+Item: ABC123, Price: 10.0, Logged at: 2024-06-05T13:20:12.342023900
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.342023900
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.342023900
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.342023900
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 4 out of bounds for length 1
+
+Map size: 1
+
+Item: ABC123, Price: 10.0, Logged at: 2024-06-05T13:20:12.351178500
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.351178500
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.351178500
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 3 out of bounds for length 1
+
+An index out of bounds error was thrown at: 2024-06-05T13:20:12.351178500
+ The error was thrown as you tried to remove an item in the hash map that was never scanned during sale
+The error message is: Index 4 out of bounds for length 1
+
+Map size: 1
+
