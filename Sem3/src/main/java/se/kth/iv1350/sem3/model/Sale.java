@@ -135,6 +135,8 @@ public class Sale {
         removeItemFromMapComposition(4);
         removeItemFromMapComposition(4);
         removeItemFromMapComposition(5);
+        removeItemFromMapInheritance(4);
+        removeItemFromMapInheritance(4);
         removeItemFromMapInheritance(5);
         getSizeOfInheritanceMap();
         getSizeofCompositionMap();

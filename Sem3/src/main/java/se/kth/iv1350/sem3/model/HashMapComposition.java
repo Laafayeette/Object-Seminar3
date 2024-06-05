@@ -32,9 +32,9 @@ public class HashMapComposition<K, V> {
      * @param value Value to be associated with the specified key.
      * @return The previous value associated with the key.
      */
-    public void put(K key, V value) {
+    public V put(K key, V value) {
         mapLogger.logAddedItemToMap(key, value);
-        hashMap.put(key, value);
+        return hashMap.put(key, value);
     }
 
     /**
@@ -44,12 +44,12 @@ public class HashMapComposition<K, V> {
      * @return The previous value associated with the key, or null if no mapping exists for the key.
      * @throws IllegalArgumentException If the given key does not exist in the map.
      */
-    public void remove(K key) throws IllegalArgumentException {
+    public V remove(K key) throws IllegalArgumentException {
         if(!hashMap.containsKey(key)) {
             throw new IllegalArgumentException("Could not remove item from map. The specified item " + "\"" + key + "\""+ " does not exist in the map");
         }
         mapLogger.logRemovedItemToMap(key);
-        hashMap.remove(key);
+        return hashMap.remove(key);
     }
 
     /**
