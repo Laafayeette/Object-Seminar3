@@ -14,7 +14,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ViewTest {
-    //private ByteArrayOutputStream inMemoryPrintOut;
     private View view;
     private ByteArrayOutputStream inMemoryPrintOut;
     private PrintStream originalSysOut;
