@@ -12,13 +12,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-    private Main mainTest; // Change variable name from mainTest to main
     private ByteArrayOutputStream inMemoryPrintOut;
     private PrintStream originalSysOut;
 
     @BeforeEach
     void setUp() {
-        mainTest = new Main();
         inMemoryPrintOut = new ByteArrayOutputStream();
         originalSysOut = System.out;
         System.setOut(new PrintStream(inMemoryPrintOut));
@@ -26,15 +24,14 @@ class MainTest {
 
     @AfterEach
     void tearDown() {
-        mainTest = null; // Change variable name from main to mainTest
         inMemoryPrintOut = null;
         System.setOut(originalSysOut);
     }
 
     @Test
     void mainTest() throws ErrorMessageHandler {
-        String[] args = {}; // Empty array
-        Main.main(args); // Change method call from main.main(args) to mainTest.main(args)
+        String[] args = {};
+        Main.main(args);
         String printOutFromView = inMemoryPrintOut.toString();
         List<String> expectedPrintString = List.of(
                 "First row in main, about to instantiate contr object.",
