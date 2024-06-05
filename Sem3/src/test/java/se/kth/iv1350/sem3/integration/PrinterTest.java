@@ -114,9 +114,7 @@ public class PrinterTest {
         purchasedItems.add(item1);
         double item1Price = item1.getItemPrice();
         double item1VAT = item1.getItemVAT();
-
         double currentTotalPrice = item1Price;  //5 kr
-
         SaleDTO saleDTO = new SaleDTO(purchasedItems, currentTotalPrice, item1VAT);
         Payment payment = new Payment(150, currentTotalPrice, paymentMethodStrategy);
         Receipt receipt = new Receipt(saleDTO, payment);
