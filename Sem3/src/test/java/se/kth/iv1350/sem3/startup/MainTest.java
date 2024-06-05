@@ -34,7 +34,7 @@ class MainTest {
     @Test
     void mainTest() throws ErrorMessageHandler {
         String[] args = {}; // Empty array
-        mainTest.main(args); // Change method call from main.main(args) to mainTest.main(args)
+        Main.main(args); // Change method call from main.main(args) to mainTest.main(args)
         String printOutFromView = inMemoryPrintOut.toString();
         List<String> expectedPrintString = List.of(
                 "First row in main, about to instantiate contr object.",
