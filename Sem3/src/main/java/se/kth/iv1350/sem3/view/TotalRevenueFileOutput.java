@@ -23,7 +23,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
      */
     public TotalRevenueFileOutput() {
         try {
-            logStream = new PrintWriter(new FileWriter("TotalRevenue.txt", true), true);
+            logStream = new PrintWriter(new FileWriter("TotalRevenueOutput.txt", true), true);
         } catch (Exception e) {
             e.printStackTrace();
         }
