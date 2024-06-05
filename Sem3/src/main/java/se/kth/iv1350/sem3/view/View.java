@@ -63,7 +63,7 @@ public class View {
         contr.endSale();
         printEndSale();
         double amount = 200;
-        String paymentMethod = "Cash123";
+        String paymentMethod = "Cash";
         System.out.println("\n-------------------Begin Payment------------------------");
         try {
             System.out.println("\nCustomer pays: " + amount + " SEK via " + paymentMethod);
@@ -107,7 +107,7 @@ public class View {
         contr.endSale();
         printEndSale();
         double amount = 12.38;
-        String paymentMethod = "Credit card";
+        String paymentMethod = "Credit card123";
         System.out.println("\n-------------------Begin Payment------------------------" );
         try {
             System.out.println("\nCustomer pays: " + amount + " SEK via " + paymentMethod);

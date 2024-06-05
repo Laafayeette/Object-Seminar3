@@ -19,7 +19,7 @@ public class Main {
         Controller contr = new Controller();
         View view = new View(contr);
         view.sampleExecution();
-        //view.sampleExecution1();
+        view.sampleExecution1();
         //Testa vy:n här genom att printa något generiskt.
     }
 }
