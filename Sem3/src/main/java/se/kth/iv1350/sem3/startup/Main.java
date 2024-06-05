@@ -14,7 +14,7 @@ public class Main {
      * Creates instances of the @Link(Controller) and passes it to the @Link(View) class' constructor to initiate the View object.
      * @param args The Command-line arguments to the program.
      */
-    public static void main(String[] args) throws ErrorMessageHandler {
+    public static void main(String[] args) {
         System.out.println("First row in main, about to instantiate contr object.");
         Controller contr = new Controller();
         System.out.println("Instantiated the controller object, about to send the contr object to View's constructor.");
