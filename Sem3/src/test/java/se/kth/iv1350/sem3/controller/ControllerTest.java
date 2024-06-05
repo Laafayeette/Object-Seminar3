@@ -99,7 +99,7 @@ public class ControllerTest {
 
         int databaseConnectionExceptionItemID = 7;
 
-       assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
+        assertThrows(DatabaseConnectionException.class, () -> contr.scanItem(databaseConnectionExceptionItemID));
 
     }
 
@@ -157,7 +157,7 @@ public class ControllerTest {
 
         SaleDTO saleDTO = contr.getSale().updateSale(item1);
 
-        double expectedTotalprice =  contr.endSale();
+        double expectedTotalprice = contr.endSale();
 
         assertEquals(expectedTotalprice, saleDTO.getCurrentTotalPrice(), 0.001);
     }
@@ -174,7 +174,7 @@ public class ControllerTest {
 
         double obviousTotalPrice = 10 * (1 + 0.25);
 
-        double expectedTotalprice =  contr.endSale();
+        double expectedTotalprice = contr.endSale();
 
         assertEquals(expectedTotalprice, obviousTotalPrice, 0.001);
     }
@@ -253,7 +253,6 @@ public class ControllerTest {
     }
 
 
-
     @Test
     void testScanItemDifferentLists() throws ItemInvalidException, DatabaseConnectionException {
         contr = new Controller();
@@ -302,7 +301,6 @@ public class ControllerTest {
 
         assertEquals("The sizes, and by extensions the lists are not identical", itemsInInvSys.size(), dummyList.size());
     }
-
 
 
     @Test
@@ -419,54 +417,4 @@ public class ControllerTest {
 
         assertEquals("The change cannot be calculated to zero", changeFromPay, expectedChange, 0.01);
     }
-
-
-
-
-
-//        public void testPayChange(int amount, String paymentMethod) {
-//            System.out.println("\n-------------------Begin Payment------------------------" + "\nCustomer pays: " + amount + " SEK via " + paymentMethod);
-//            double currentTotalPrice = sale.getCurrentTotalPrice();
-//            Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
-//            Receipt receipt = new Receipt(sale.getSaleDTO(), payment);
-//            printer.print(receipt);
-//            saleLog.registerSaleLog(sale.getSaleDTO());
-//            sale = null;
-//            System.out.println("Payment finalized: Accounting and InventorySystem updated DELETE THIS LATER");
-//        }
-//
-//
-//
-//        Printer printer = new Printer();
-//        ItemDTO item1 = new ItemDTO("Gurka", 2, 5.0, 0.25, 1);
-//        purchasedItems.add(item1);
-//        double item1Price = item1.getItemPrice();
-//        double item1VAT = item1.getItemVAT();
-//
-//        double currentTotalPrice = item1Price;  //5 kr
-//
-//        SaleDTO saleDTO = new SaleDTO(purchasedItems, item1Price, item1VAT);
-//
-//        Payment payment = new Payment(150, "Cash", currentTotalPrice);
-//
-//        Receipt receipt = new Receipt(saleDTO, payment);
-//
-//        printer.print(receipt);
-//
-//        Receipt printedReceipt = printer.getReceipt();
-//
-//        Assertions.assertEquals(receipt, printedReceipt);
-
-    }
-
-//    public void testPayChange(int amount, String paymentMethod) {
-//        System.out.println("\n-------------------Begin Payment------------------------" + "\nCustomer pays: " + amount + " SEK via " + paymentMethod);
-//        double currentTotalPrice = sale.getCurrentTotalPrice();
-//        Payment payment = new Payment(amount, paymentMethod, currentTotalPrice);
-//        Receipt receipt = new Receipt(sale.getSaleDTO(), payment);
-//        printer.print(receipt);
-//        saleLog.registerSaleLog(sale.getSaleDTO());
-//        updateExternalSystems();
-//        sale = null;
-//        System.out.println("Payment finalized: Accounting and InventorySystem updated DELETE THIS LATER");
-//    }
+}
