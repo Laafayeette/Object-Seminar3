@@ -1,5 +1,7 @@
 package se.kth.iv1350.sem3.view;
 
+import se.kth.iv1350.sem3.util.ErrorLogHandler;
+
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -12,7 +14,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
     private PrintWriter logStream;  //Specifik
     private LocalDateTime localDateTime = LocalDateTime.now(); //Specifik
 
-    private final ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
+    private final ErrorLogHandler errorLogHandler = new ErrorLogHandler("TotalRevenueFileOutputError.txt");
 
 
     @Override
@@ -22,7 +24,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
 
     @Override
     protected void handleErrors(Exception e) {
-        errorMsgHandler.showMessage("Operation resulted in error.");
+        errorLogHandler.log(e);
     }
 
 

@@ -16,6 +16,6 @@ public class TotalRevenueView extends TotalRevenueTemplate {
 
     @Override
     protected void handleErrors(Exception e) {
-        errorMsgHandler.showMessage("Operation resulted in error.");
+        errorMsgHandler.showMessage("Operation resulted in error." + e.getMessage());
     }
 }
