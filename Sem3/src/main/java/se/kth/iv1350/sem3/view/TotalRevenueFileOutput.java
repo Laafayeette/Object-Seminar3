@@ -30,7 +30,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate {
     }
 
     @Override
-    protected void doShowTotalRevenue(double totalRevenue) throws Exception {
+    protected void doShowTotalRevenue(double totalRevenue) {
         logStream.println("The total revenue is: " + String.format("%.2f",totalRevenue) + " SEK" + " calculated at: " + localDateTime + "\n");
     }
 
