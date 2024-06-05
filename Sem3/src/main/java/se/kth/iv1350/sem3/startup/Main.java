@@ -15,11 +15,14 @@ public class Main {
      * @param args The Command-line arguments to the program.
      */
     public static void main(String[] args) throws ErrorMessageHandler {
-
+        System.out.println("First row in main, about to instantiate contr object.");
         Controller contr = new Controller();
+        System.out.println("Instantiated the controller object, about to send the contr object to View's constructor.");
         View view = new View(contr);
+        System.out.println("Sent the contr object to View's constructor. Instantiated view object.");
         view.sampleExecution();
+        System.out.println("Called on sampleExecution using view object reference.");
         view.sampleExecution1();
-        //Testa vy:n här genom att printa något generiskt.
+        System.out.println("Called on sampleExecution1 using view object reference.");
     }
 }
